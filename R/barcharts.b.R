@@ -356,26 +356,8 @@ barchartsClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                                              else vars)
                     }
                 }
-                dummyframe <- data.frame(response=order, colors=pal)
-                if(type == 'diverging') {
-                    nresponse = 0
-                    for(it in unique(data$item)) {
-                        isub <- subset(data, item == it)
-                        nresponse <- max(nresponse, 
-                                         length(unique(isub$response)))
-                    }
-                    if(nresponse > 3) {
-                        dummyframe <- dummyframe[order(dummyframe$response),]
-                    }
-                    else {
-                        dummyframe <- dummyframe[nrow(dummyframe):1,]
-                    }
-                }
-                subframe <- subset(dummyframe,
-                                   response %in% unique(data$response))
-                final_colors <- if(type != 'stacked') subframe$colors else
-                    rev(subframe$colors)
-                plot <- plot + scale_fill_manual(values=final_colors)
+                plot <- plot + scale_fill_manual(values=if(type != 'grouped') rev(pal) else pal,
+                                                 drop = FALSE)
                 plot <- plot + theme_pubclean() +
                     theme(legend.title=element_blank()) +
                     theme(strip.background=element_rect(fill=stripColor))
