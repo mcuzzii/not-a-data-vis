@@ -1,0 +1,118 @@
+---
+name:  piecharts
+title: Pie Charts
+menuGroup: nadv
+version: '1.0.0'
+jas: '1.2'
+
+options:
+    - name: data
+      type: Data
+
+    - name: vars
+      title: Survey items
+      type: Variables
+      suggested: [ ordinal, nominal ]
+      permitted: [ factor]
+
+    - name: group
+      title: Split by
+      type: Variable
+      suggested: [ ordinal, nominal ]
+      permitted: [ factor]
+
+    - name: type
+      type: List
+      options:
+        - title: Pie chart
+          name:  pie
+        - title: Doughnut chart
+          name:  doughnut
+      default: pie
+
+    - name: explode
+      title: Explode
+      type: Bool
+      default: false
+    
+    - name: expvalues
+      title: 'Values, separated by comma'
+      type: String
+    
+    - name: showtitle
+      title: Title
+      type: Bool
+      default: true
+    
+    - name: showlabels
+      title: Labels
+      type: Bool
+      default: false
+    
+    - name: labeltype
+      type: List
+      options:
+        - title: Percentages
+          name:  percentage
+        - title: Counts
+          name:  frequency
+      default: percentage
+    
+    - name: invertcolors
+      title: Invert colors
+      type: Bool
+      default: false
+    
+    - name: showlegend
+      title: Legend
+      type: Bool
+      default: true
+    
+    - name: palcolor
+      title: Palette
+      type: List
+      options:
+        - name: 'YlOrRd'
+          title: 'Hot'
+        - name: 'YlOrBr'
+          title: 'Cozy'
+        - name: 'YlGnBu'
+          title: 'Warm ocean'
+        - name: 'YlGn'
+          title: 'Meadows'
+        - name: 'Reds'
+          title: 'Reds'
+        - name: 'RdPu'
+          title: 'Fandango'
+        - name: 'Purples'
+          title: 'Eggplant'
+        - name: 'PuRd'
+          title: 'Purple Reds'
+        - name: 'PuBuGn'
+          title: 'Pearl'
+        - name: 'PuBu'
+          title: 'Sky'
+        - name: 'OrRd'
+          title: 'Warm'
+        - name: 'Oranges'
+          title: 'Canyon'
+        - name: 'Greys'
+          title: 'Limbo'
+        - name: 'Greens'
+          title: 'Leaf'
+        - name: 'GnBu'
+          title: 'Cyan'
+        - name: 'BuPu'
+          title: 'Violets'
+        - name: 'BuGn'
+          title: 'Rainforest'
+        - name: 'Blues'
+          title: 'Deep ocean'
+        - name: 'Spectral'
+          title: 'Spectral'
+        - name: 'RdYlGn'
+          title: 'Tropical'
+        - name: 'RdYlBu'
+          title: 'Nautical'
+      default: 'Purples'
+...

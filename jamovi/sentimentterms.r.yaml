@@ -1,0 +1,21 @@
+---
+name:  sentimentterms
+title: Sentiment Terms
+jrs:   '1.1'
+
+items:
+    - name: text
+      title: Sentiment Terms
+      visible: FALSE
+      type: Html
+    
+    - name: plots
+      title: Wordclouds
+      type: Array
+      visible: FALSE
+      template:
+        title: $key
+        type: Image
+        renderFun: .plot
+
+...

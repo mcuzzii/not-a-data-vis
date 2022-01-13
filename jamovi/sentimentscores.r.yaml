@@ -1,0 +1,17 @@
+---
+name:  sentimentscores
+title: Sentiment Scores
+jrs:   '1.1'
+
+items:
+    - name:  text
+      title: Sentiment Analysis
+      visible: FALSE
+      type:  Html
+    
+    - name: plot
+      title: Plot
+      visible: FALSE
+      type: Image
+      renderFun: .plot
+...

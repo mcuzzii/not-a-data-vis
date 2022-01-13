@@ -1,0 +1,57 @@
+---
+title: Categorical Variable Plots and Text Mining
+name: nadv
+version: 0.2.0
+jms: '1.0'
+authors:
+  - Marcus Tornea <marcus.tornea@outlook.ph>
+maintainer: Marcus Tornea <marcus.tornea@outlook.ph>
+date: '2021-08-12'
+type: R
+description: >-
+  This module provides functionality for categorical data visualization and text
+  mining capabilities. It features diverging stacked bar charts which are useful
+  for ordinal data visualization. Text mining capabilities include sentiment
+  analysis, word cloud generation, and frequencies of emotional phrases
+  classified under anger, anticipation, disgust, fear, joy, sadness, surprise,
+  and/or trust. 
+
+  The sentiment analysis is based on the sentimentr package in R, which hosts a
+  lexicon-based sentiment detection algorithm based on the Syuzhet lexicon. On
+  one hand, emotions are detected based on the NRC Emotion Lexicon. These
+  lexicons are also the basis of word cloud generation.
+analyses:
+  - title: Bar Charts
+    name: barcharts
+    ns: nadv
+    menuGroup: nadv
+    menuSubgroup: Categorical Data
+    menuTitle: Bar Charts
+  - title: Pie Charts
+    name: piecharts
+    ns: nadv
+    menuGroup: nadv
+    menuSubgroup: Categorical Data
+    menuTitle: Pie Charts
+  - title: Sentiment Scores
+    name: sentimentscores
+    ns: nadv
+    menuGroup: nadv
+    menuSubgroup: Text Mining
+    menuTitle: Sentiment Scores
+  - title: Sentiment Terms
+    name: sentimentterms
+    ns: nadv
+    menuGroup: nadv
+    menuSubgroup: Text Mining
+    menuTitle: Sentiment Terms
+  - title: Emotion Detection
+    name: emotiondetection
+    ns: nadv
+    menuGroup: nadv
+    menuSubgroup: Text Mining
+    menuTitle: Emotion Detection
+usesNative: true
+minApp: 1.0.8
+
+...

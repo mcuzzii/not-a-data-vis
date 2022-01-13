@@ -1,0 +1,7 @@
+censor_worker           mgsub_censor worker
+fast_replace            Fast escape replace
+filter_overlap          Filter overlaps from matches
+get_matches             Get all matches
+mgsub                   Safe, multiple gsub
+mgsub_censor            Safe, multiple censoring of text strings
+worker                  mgsub worker

@@ -1,0 +1,93 @@
+title: Sentiment Terms
+name: sentimentterms
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Sentiment data
+        children:
+          - type: VariablesListBox
+            name: sentiment_data
+            isTarget: true
+      - type: TargetLayoutBox
+        label: Splitting variable
+        children:
+          - type: VariablesListBox
+            name: split_var
+            maxItemCount: 1
+            isTarget: true
+  - type: LayoutBox
+    margin: large
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        cell:
+          column: 0
+          row: 0
+        stretchFactor: 1
+        children:
+          - type: Label
+            label: Sentiment Type
+            children:
+              - type: ComboBox
+                name: sentiment_type
+          - type: Label
+            label: Display Options
+            children:
+              - type: CheckBox
+                name: switch
+              - type: ComboBox
+                name: font_family
+              - type: ComboBox
+                name: font_face
+              - type: ComboBox
+                name: palette_colors
+              - type: TextBox
+                name: scale_percentage
+                suffix: '%'
+                format: number
+              - type: TextBox
+                name: max_words
+                suffix: 'words'
+                format: number
+      - type: LayoutBox
+        margin: large
+        cell:
+          column: 1
+          row: 0
+        stretchFactor: 1
+        children:
+          - type: Label
+            label: Analysis Mode
+            children:
+              - type: RadioButton
+                name: aggregate_mode
+                optionName: analysis_mode
+                optionPart: aggregate
+              - type: RadioButton
+                name: commonalities_mode
+                optionName: analysis_mode
+                optionPart: commonalities
+              - type: RadioButton
+                name: comparison_mode
+                optionName: analysis_mode
+                optionPart: comparison
+          - type: Label
+            label: Image Size
+            children:
+              - type: CheckBox
+                name: custom_img_size
+              - type: TextBox
+                name: custom_width
+                suffix: 'px'
+                format: number
+              - type: TextBox
+                name: custom_height
+                suffix: 'px'
+                format: number

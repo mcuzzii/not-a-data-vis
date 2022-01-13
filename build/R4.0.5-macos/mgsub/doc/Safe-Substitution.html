@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Safe Substitution</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Safe Substitution</h1>
+
+
+
+<div id="string-substitutions" class="section level2">
+<h2>String Substitutions</h2>
+<p>Modifying existing strings via substitution is a common practice in programing. To this end, functions like <code>gsub</code> provide a method to accomplish this. Below is an example where “hey” is replaced with “ho” transforming a line from the Ramones into Santa Claus leaving on Christmas Eve.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">s =<span class="st"> &quot;hey ho, let's go!&quot;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">gsub</span>(<span class="st">&quot;hey&quot;</span>, <span class="st">&quot;ho&quot;</span>, s)</a></code></pre></div>
+<pre><code>## [1] &quot;ho ho, let's go!&quot;</code></pre>
+</div>
+<div id="simultaneous-substitutions" class="section level2">
+<h2>Simultaneous Substitutions</h2>
+<p><code>gsub</code> only supports one string of matching with one string of replacement. What this means is while you can match on multiple conditions, you can only provide one condition of replacement. Below we construct a regular expression which matches on “hey” or “ho” and replaces any such matches with “yo”.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">s =<span class="st"> &quot;hey ho, let's go!&quot;</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">gsub</span>(<span class="st">&quot;hey|ho&quot;</span>, <span class="st">&quot;yo&quot;</span>, s)</a></code></pre></div>
+<pre><code>## [1] &quot;yo yo, let's go!&quot;</code></pre>
+<p>If you wanted to replace “hey” with “get” and “ho” with “ready” you would need two steps.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">s =<span class="st"> &quot;hey ho, let's go!&quot;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">s_new =<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;hey&quot;</span>, <span class="st">&quot;get&quot;</span>, s)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">s_new =<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;ho&quot;</span>, <span class="st">&quot;ready&quot;</span>, s_new)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">s_new</a></code></pre></div>
+<pre><code>## [1] &quot;get ready, let's go!&quot;</code></pre>
+<p>This sequential process however can result in undesired changes. If we want to swap where “hey” and “ho” are, we can see the process breaks down. Because each change happens in order, “hey” becomes “ho” and then every “ho” becomes “hey”, undoing the first step.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">s =<span class="st"> &quot;hey ho, let's go!&quot;</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">s_new =<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;hey&quot;</span>, <span class="st">&quot;ho&quot;</span>, s)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">s_new =<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;ho&quot;</span>, <span class="st">&quot;hey&quot;</span>, s_new)</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">s_new</a></code></pre></div>
+<pre><code>## [1] &quot;hey hey, let's go!&quot;</code></pre>
+</div>
+<div id="mgsub" class="section level2">
+<h2>mgsub</h2>
+<p>This is where the idea of <code>mgsub</code> comes in. <code>mgsub</code> is a safe, simultaneous string substitution function. We pass in a patterns to match as well as replacements and the replacements are applied simultaneously.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(mgsub)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">s =<span class="st"> &quot;hey ho, let's go!&quot;</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">mgsub<span class="op">::</span><span class="kw">mgsub</span>(<span class="dt">string =</span> s, <span class="dt">pattern =</span> <span class="kw">c</span>(<span class="st">&quot;hey&quot;</span>, <span class="st">&quot;ho&quot;</span>), <span class="dt">replacement =</span> <span class="kw">c</span>(<span class="st">&quot;ho&quot;</span>, <span class="st">&quot;hey&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;ho hey, let's go!&quot;</code></pre>
+<div id="regular-expression-support" class="section level3">
+<h3>Regular Expression Support</h3>
+<p><code>mgsub</code> fully supports regular expressions as matching criteria as well as backreferences in the replacement. Note how the matching criteria ignores “dopachloride” for replacement but matches both “Dopazamine” and “dopastriamine” (all fake chemicals despite what the replace string claims!).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">s =<span class="st"> &quot;Dopazamine is not the same as dopachloride or dopastriamine, yet is still fake.&quot;</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">pattern =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;[Dd]opa([^ ]*?mine)&quot;</span>, <span class="st">&quot;fake&quot;</span>)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">replacement =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Meta</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="st">&quot;real&quot;</span>)</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">mgsub<span class="op">::</span><span class="kw">mgsub</span>(s, pattern, replacement)</a></code></pre></div>
+<pre><code>## [1] &quot;Metazamine is not the same as dopachloride or Metastriamine, yet is still real.&quot;</code></pre>
+<p>Furthermore, you can pass through any options from the <code>gsub</code> family. In the example below you can see fixed string matching</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">s =<span class="st"> &quot;All my life I chased $money$ and .power. - not love!&quot;</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">pattern =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;$money$&quot;</span>, <span class="st">&quot;.power.&quot;</span>, <span class="st">&quot;love&quot;</span>)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">replacement =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;balloons&quot;</span>, <span class="st">&quot;dolphins&quot;</span>, <span class="st">&quot;success&quot;</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">mgsub<span class="op">::</span><span class="kw">mgsub</span>(s, pattern, replacement, <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;All my life I chased balloons and dolphins - not success!&quot;</code></pre>
+</div>
+<div id="safe-substitution" class="section level3">
+<h3>Safe Substitution</h3>
+<p>This is actually the most compelling feature of <code>mgsub</code>. Several packages implement a similar type function (also named <code>mgsub</code>) which do not employ safe substitution - <code>qdap</code>, <code>bazar</code> and <code>textclean</code>. A detailed analysis of safety can be found on <a href="https://thug-r.life/post/2018-01-26-mgsub-launched/">my blog</a>. Here is a quick overview of what is meant by safety:</p>
+<ol style="list-style-type: decimal">
+<li>Longer matches are preferred over shorter matches for substitution first</li>
+<li>No placeholders are used so accidental string collisions don’t occur</li>
+</ol>
+<p>First, a demonstration of the first form of safety. Note how we are searching for ‘they’ and ‘the’ where ‘the’ is a substring of ‘they’. If ‘the’ is matched before ‘they’, we would expect to see “ay don’t understand the value of what they seek.”, but in both cases, the replacements occur correctly.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">s =<span class="st"> &quot;they don't understand the value of what they seek.&quot;</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">pattern =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;the&quot;</span>, <span class="st">&quot;they&quot;</span>)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">replacement =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;we&quot;</span>)</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">mgsub<span class="op">::</span><span class="kw">mgsub</span>(s, pattern, replacement)</a></code></pre></div>
+<pre><code>## [1] &quot;we don't understand a value of what we seek.&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">qdap<span class="op">::</span><span class="kw">mgsub</span>(pattern, replacement, s)</a></code></pre></div>
+<pre><code>## [1] &quot;we don't understand a value of what we seek.&quot;</code></pre>
+<p>We can continue to test this by using variable length regular expression matches. Note that we provide two different matching criteria, one a regular expression of length 6 but which matches a length 10 and the other a match of length 9. However, <code>qdap</code> only prioritizes based on the length of the regular expression, not on the actual length of the match. While this is an edge case, it an example of safety provided by <code>mgsub</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">s =<span class="st"> &quot;Dopazamine is a fake chemical&quot;</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">pattern =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dopazamin&quot;</span>, <span class="st">&quot;do.*ne&quot;</span>)</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">replacement =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;freakout&quot;</span>, <span class="st">&quot;metazamine&quot;</span>)</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">mgsub<span class="op">::</span><span class="kw">mgsub</span>(s, pattern, replacement, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;metazamine is a fake chemical&quot;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">qdap<span class="op">::</span><span class="kw">mgsub</span>(pattern, replacement, s, <span class="dt">fixed =</span> <span class="ot">FALSE</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;freakoute is a fake chemical&quot;</code></pre>
+<p>In the second case, <code>mgsub</code> does not utilize placeholders and therefore guarantees no string collisions when replacing. Consider a simple example of shifting each word in the following string one spot to the left. <code>mgsub</code> correctly shifts each word while <code>qdap</code> provides two wrong sets of substitutions depending on the other arguments you provide.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">s =<span class="st"> &quot;hey, how are you?&quot;</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">pattern =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;hey&quot;</span>, <span class="st">&quot;how&quot;</span>, <span class="st">&quot;are&quot;</span>, <span class="st">&quot;you&quot;</span>)</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">replacement =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;how&quot;</span>, <span class="st">&quot;are&quot;</span>, <span class="st">&quot;you&quot;</span>, <span class="st">&quot;hey&quot;</span>)</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">mgsub<span class="op">::</span><span class="kw">mgsub</span>(s, pattern, replacement)</a></code></pre></div>
+<pre><code>## [1] &quot;how, are you hey?&quot;</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">print</span>(qdap<span class="op">::</span><span class="kw">mgsub</span>(pattern, replacement, s))</a></code></pre></div>
+<pre><code>## [1] &quot;how, are you how?&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">print</span>(qdap<span class="op">::</span><span class="kw">mgsub</span>(pattern, replacement, s, <span class="dt">fixed =</span> <span class="ot">FALSE</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;hey, hey hey hey?&quot;</code></pre>
+</div>
+</div>
+<div id="performance" class="section level2">
+<h2>Performance</h2>
+<p><code>mgsub</code> pays the price of safety in performance. When only a single string is passed in to be modified, it runs about as fast as <code>qdap</code>. However, when multiple strings are passed in, <code>qdap</code> is far more elastic than <code>mgsub</code>.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(microbenchmark)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">s =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dopazamine is not the same as Dopachloride and is still fake.&quot;</span>,</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">      <span class="st">&quot;dopazamine is undergoing a review by the fake news arm of the Dopazamine government&quot;</span>)</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">pattern =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;[Dd]opa(.*?mine)&quot;</span>, <span class="st">&quot;fake&quot;</span>)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6">replacement =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Meta</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="st">&quot;real&quot;</span>)</a>
+<a class="sourceLine" id="cb29-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="kw">microbenchmark</span>(</a>
+<a class="sourceLine" id="cb29-9" data-line-number="9">  <span class="dt">mgsub =</span> mgsub<span class="op">::</span><span class="kw">mgsub</span>(s[<span class="dv">1</span>], pattern, replacement),</a>
+<a class="sourceLine" id="cb29-10" data-line-number="10">  <span class="dt">qdap =</span> qdap<span class="op">::</span><span class="kw">mgsub</span>(pattern, replacement, s[<span class="dv">1</span>], <span class="dt">fixed =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb29-11" data-line-number="11">)</a></code></pre></div>
+<pre><code>## Unit: microseconds
+##   expr     min       lq      mean   median       uq     max neval
+##  mgsub 154.401 157.5085 166.09614 163.7445 169.2980 291.607   100
+##   qdap  47.920  50.9605  55.57665  55.2865  58.8185  99.124   100</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">microbenchmark</span>(</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">  <span class="dt">mgsub =</span> mgsub<span class="op">::</span><span class="kw">mgsub</span>(s, pattern, replacement),</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  <span class="dt">qdap =</span> qdap<span class="op">::</span><span class="kw">mgsub</span>(pattern, replacement, s, <span class="dt">fixed =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">)</a></code></pre></div>
+<pre><code>## Unit: microseconds
+##   expr     min       lq      mean   median       uq     max neval
+##  mgsub 319.401 326.4465 335.79102 333.4840 337.4685 434.950   100
+##   qdap  54.882  60.0235  65.00009  65.9265  67.0450 120.468   100</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

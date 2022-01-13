@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>R: Text Cleaning Tools</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+<h1> Text Cleaning Tools
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;textclean&rsquo; version 0.9.3</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../NEWS">Package NEWS</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="textclean.html">textclean-package</a></td>
+<td>Text Cleaning Tools</td></tr>
+<tr><td style="width: 25%;"><a href="add_comma_space.html">add_comma_space</a></td>
+<td>Ensure Space After Comma</td></tr>
+<tr><td style="width: 25%;"><a href="add_missing_endmark.html">add_missing_endmark</a></td>
+<td>Add Missing Endmarks</td></tr>
+<tr><td style="width: 25%;"><a href="check_text.html">available_checks</a></td>
+<td>Check Text For Potential Problems</td></tr>
+<tr><td style="width: 25%;"><a href="check_text.html">check_text</a></td>
+<td>Check Text For Potential Problems</td></tr>
+<tr><td style="width: 25%;"><a href="DATA.html">DATA</a></td>
+<td>Fictitious Classroom Dialogue</td></tr>
+<tr><td style="width: 25%;"><a href="drop_element.html">drop_element</a></td>
+<td>Filter Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="drop_element.html">drop_element_fixed</a></td>
+<td>Filter Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="drop_element.html">drop_element_regex</a></td>
+<td>Filter Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="drop_row.html">drop_empty_row</a></td>
+<td>Filter Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="drop_row.html">drop_NA</a></td>
+<td>Filter Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="drop_row.html">drop_row</a></td>
+<td>Filter Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="fgsub.html">fgsub</a></td>
+<td>Replace a Regex with an Functional Operation on the Regex Match</td></tr>
+<tr><td style="width: 25%;"><a href="filter_element.html">filter_element</a></td>
+<td>Remove Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="filter_row.html">filter_empty_row</a></td>
+<td>Remove Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="filter_row.html">filter_NA</a></td>
+<td>Remove Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="filter_row.html">filter_row</a></td>
+<td>Remove Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="has_endmark.html">has_endmark</a></td>
+<td>Test for Incomplete Sentences</td></tr>
+<tr><td style="width: 25%;"><a href="which_are.html">is_it</a></td>
+<td>Detect/Locate Potential Non-Normalized Text</td></tr>
+<tr><td style="width: 25%;"><a href="drop_element.html">keep_element</a></td>
+<td>Filter Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="drop_element.html">keep_element_fixed</a></td>
+<td>Filter Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="drop_element.html">keep_element_regex</a></td>
+<td>Filter Elements in a Vetor</td></tr>
+<tr><td style="width: 25%;"><a href="drop_row.html">keep_row</a></td>
+<td>Filter Rows That Contain Markers</td></tr>
+<tr><td style="width: 25%;"><a href="make_plural.html">make_plural</a></td>
+<td>Make Plural (or Verb to Singular) Versions of Words</td></tr>
+<tr><td style="width: 25%;"><a href="match_tokens.html">match_tokens</a></td>
+<td>Find Tokens that Match a Regex</td></tr>
+<tr><td style="width: 25%;"><a href="mgsub.html">mgsub</a></td>
+<td>Multiple 'gsub'</td></tr>
+<tr><td style="width: 25%;"><a href="mgsub.html">mgsub_fixed</a></td>
+<td>Multiple 'gsub'</td></tr>
+<tr><td style="width: 25%;"><a href="mgsub.html">mgsub_regex</a></td>
+<td>Multiple 'gsub'</td></tr>
+<tr><td style="width: 25%;"><a href="mgsub.html">mgsub_regex_safe</a></td>
+<td>Multiple 'gsub'</td></tr>
+<tr><td style="width: 25%;"><a href="textclean.html">package-textclean</a></td>
+<td>Text Cleaning Tools</td></tr>
+<tr><td style="width: 25%;"><a href="print.check_text.html">print.check_text</a></td>
+<td>Prints a check_text Object</td></tr>
+<tr><td style="width: 25%;"><a href="print.sub_holder.html">print.sub_holder</a></td>
+<td>Prints a sub_holder object</td></tr>
+<tr><td style="width: 25%;"><a href="print.which_are_locs.html">print.which_are_locs</a></td>
+<td>Prints a which_are_locs Object</td></tr>
+<tr><td style="width: 25%;"><a href="replace_contraction.html">replace_contraction</a></td>
+<td>Replace Contractions</td></tr>
+<tr><td style="width: 25%;"><a href="replace_non_ascii.html">replace_curly_quote</a></td>
+<td>Replace Common Non-ASCII Characters</td></tr>
+<tr><td style="width: 25%;"><a href="replace_date.html">replace_date</a></td>
+<td>Replace Dates With Words</td></tr>
+<tr><td style="width: 25%;"><a href="replace_email.html">replace_email</a></td>
+<td>Replace Email Addresses</td></tr>
+<tr><td style="width: 25%;"><a href="replace_emoji.html">replace_emoji</a></td>
+<td>Replace Emojis With Words/Identifier</td></tr>
+<tr><td style="width: 25%;"><a href="replace_emoji.html">replace_emoji_identifier</a></td>
+<td>Replace Emojis With Words/Identifier</td></tr>
+<tr><td style="width: 25%;"><a href="replace_emoticon.html">replace_emoticon</a></td>
+<td>Replace Emoticons With Words</td></tr>
+<tr><td style="width: 25%;"><a href="replace_to.html">replace_from</a></td>
+<td>Grab Begin/End of String to/from Character</td></tr>
+<tr><td style="width: 25%;"><a href="replace_grade.html">replace_grade</a></td>
+<td>Replace Grades With Words</td></tr>
+<tr><td style="width: 25%;"><a href="replace_hash.html">replace_hash</a></td>
+<td>Replace Hashes</td></tr>
+<tr><td style="width: 25%;"><a href="replace_html.html">replace_html</a></td>
+<td>Replace HTML Markup</td></tr>
+<tr><td style="width: 25%;"><a href="replace_incomplete.html">replace_incomplete</a></td>
+<td>Denote Incomplete End Marks With "|"</td></tr>
+<tr><td style="width: 25%;"><a href="replace_internet_slang.html">replace_internet_slang</a></td>
+<td>Replace Internet Slang</td></tr>
+<tr><td style="width: 25%;"><a href="replace_kern.html">replace_kern</a></td>
+<td>Replace Kerned (Spaced) with No Space Version</td></tr>
+<tr><td style="width: 25%;"><a href="replace_money.html">replace_money</a></td>
+<td>Replace Money With Words</td></tr>
+<tr><td style="width: 25%;"><a href="replace_names.html">replace_names</a></td>
+<td>Replace First/Last Names</td></tr>
+<tr><td style="width: 25%;"><a href="replace_non_ascii.html">replace_non_ascii</a></td>
+<td>Replace Common Non-ASCII Characters</td></tr>
+<tr><td style="width: 25%;"><a href="replace_number.html">replace_number</a></td>
+<td>Replace Numbers With Text Representation</td></tr>
+<tr><td style="width: 25%;"><a href="replace_ordinal.html">replace_ordinal</a></td>
+<td>Replace Mixed Ordinal Numbers With Text Representation</td></tr>
+<tr><td style="width: 25%;"><a href="replace_rating.html">replace_rating</a></td>
+<td>Replace Ratings With Words</td></tr>
+<tr><td style="width: 25%;"><a href="replace_symbol.html">replace_symbol</a></td>
+<td>Replace Symbols With Word Equivalents</td></tr>
+<tr><td style="width: 25%;"><a href="replace_tag.html">replace_tag</a></td>
+<td>Replace Handle Tags</td></tr>
+<tr><td style="width: 25%;"><a href="replace_time.html">replace_time</a></td>
+<td>Replace Time Stamps With Words</td></tr>
+<tr><td style="width: 25%;"><a href="replace_to.html">replace_to</a></td>
+<td>Grab Begin/End of String to/from Character</td></tr>
+<tr><td style="width: 25%;"><a href="replace_tokens.html">replace_tokens</a></td>
+<td>Replace Tokens</td></tr>
+<tr><td style="width: 25%;"><a href="replace_url.html">replace_url</a></td>
+<td>Replace URLs</td></tr>
+<tr><td style="width: 25%;"><a href="replace_white.html">replace_white</a></td>
+<td>Remove Escaped Characters</td></tr>
+<tr><td style="width: 25%;"><a href="replace_word_elongation.html">replace_word_elongation</a></td>
+<td>Replace Word Elongations</td></tr>
+<tr><td style="width: 25%;"><a href="strip.html">strip</a></td>
+<td>Strip Text</td></tr>
+<tr><td style="width: 25%;"><a href="strip.html">strip.character</a></td>
+<td>Strip Text</td></tr>
+<tr><td style="width: 25%;"><a href="strip.html">strip.default</a></td>
+<td>Strip Text</td></tr>
+<tr><td style="width: 25%;"><a href="strip.html">strip.factor</a></td>
+<td>Strip Text</td></tr>
+<tr><td style="width: 25%;"><a href="strip.html">strip.list</a></td>
+<td>Strip Text</td></tr>
+<tr><td style="width: 25%;"><a href="sub_holder.html">sub_holder</a></td>
+<td>Hold the Place of Characters Prior to Subbing</td></tr>
+<tr><td style="width: 25%;"><a href="swap.html">swap</a></td>
+<td>Swap Two Patterns Simultaneously</td></tr>
+<tr><td style="width: 25%;"><a href="textclean.html">textclean</a></td>
+<td>Text Cleaning Tools</td></tr>
+<tr><td style="width: 25%;"><a href="which_are.html">which_are</a></td>
+<td>Detect/Locate Potential Non-Normalized Text</td></tr>
+</table>
+</body></html>

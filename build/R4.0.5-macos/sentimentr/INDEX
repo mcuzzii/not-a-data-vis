@@ -1,0 +1,65 @@
+as_key                  Create/Manipulate Hash Keys
+available_data          Get Available Data
+average_downweighted_zero
+                        Downweighted Zeros Averaging
+combine_data            Combine 'sentimentr"s Sentiment Data Sets
+course_evaluations      Student Course Evaluation Comments
+crowdflower_deflategate
+                        Twitter Tweets About the Deflategate
+crowdflower_products    Twitter Tweets About the Products
+crowdflower_self_driving_cars
+                        Twitter Tweets About Self Driving Cars
+crowdflower_weather     Twitter Tweets About the Weather
+emotion                 Compute Emotion Rate
+emotion_by              Emotion Rate By Groups
+extract_emotion_terms   Extract Emotion Words
+extract_profanity_terms
+                        Extract Profanity Words
+extract_sentiment_terms
+                        Extract Sentiment Words
+general_rescale         Rescale a Numeric Vector
+get_sentences           Get Sentences
+get_sentences2          Get Sentences (Deprecated)
+highlight               Polarity Text Highlighting
+hotel_reviews           Hotel Reviews
+hu_liu_apex_reviews     Apex AD2600 Progressive-scan DVD player Product
+                        Reviews From Amazon
+hu_liu_cannon_reviews   Cannon G3 Camera Product Reviews From Amazon
+hu_liu_jukebox_reviews
+                        Creative Labs Nomad Jukebox Zen Xtra 40GB
+                        Product Reviews From Amazon
+hu_liu_nikon_reviews    Nikon Coolpix 4300 Product Reviews From Amazon
+hu_liu_nokia_reviews    Nokia 6610 Product Reviews From Amazon
+kaggle_movie_reviews    Movie Reviews
+kotzias_reviews_amazon_cells
+                        Kotzias Reviews: Amazon Cells
+kotzias_reviews_imdb    Kotzias Reviews: IMBD
+kotzias_reviews_yelp    Kotzias Reviews: Yelp
+nyt_articles            Sentiment Scored New York Times Articles
+plot.emotion            Plots a emotion object
+plot.emotion_by         Plots a emotion_by object
+plot.profanity          Plots a profanity object
+plot.profanity_by       Plots a profanity_by object
+plot.sentiment          Plots a sentiment object
+plot.sentiment_by       Plots a sentiment_by object
+presidential_debates_2012
+                        2012 U.S. Presidential Debates
+print.extract_emotion_terms
+                        Prints an extract_emotion_terms Object
+print.extract_profanity_terms
+                        Prints an extract_profanity_terms Object
+print.extract_sentiment_terms
+                        Prints an extract_sentiment_terms Object
+print.validate_sentiment
+                        Prints a validate_sentiment Object
+profanity               Compute Profanity Rate
+profanity_by            Profanity Rate By Groups
+sam_i_am                Sam I Am Text
+sentiment               Polarity Score (Sentiment Analysis)
+sentiment_attributes    Extract Sentiment Attributes from Text
+sentiment_by            Polarity Score (Sentiment Analysis) By Groups
+sentimentr              Calculate Text Polarity Sentiment
+uncombine               Ungroup a 'sentiment_by' Object to the Sentence
+                        Level
+validate_sentiment      Validate Sentiment Score Sign Against Known
+                        Results

@@ -1,0 +1,33 @@
+---
+name:  barcharts
+title: Bar Charts
+jrs:   '1.1'
+
+items:
+    - name: text
+      title: Bar Charts
+      visible: FALSE
+      type: Html
+      
+    - name: barchart
+      title: Output
+      type: Image
+      clearWith:
+        - vars
+        - group
+        - format
+        - type
+        - display
+        - percent
+        - flip_axes
+        - sort
+        - items_title
+        - items_name
+        - freq_title
+        - showlegend
+        - palcolor
+        - imgsizemode
+        - imgwidth
+        - imgheight
+      renderFun: .plot
+...

@@ -1,0 +1,30 @@
+---
+name:  piecharts
+title: Pie Charts
+jrs:   '1.1'
+
+items:
+    - name: text
+      title: Pie Charts
+      type: Html
+      visible: FALSE
+    
+    - name: piecharts
+      title: Output
+      type: Array
+      clearWith:
+        - vars
+        - group
+        - type
+        - explode
+        - expvalues
+        - showlabels
+        - labeltype
+        - showlegend
+        - palcolor
+      template:
+        name: $key
+        type: Image
+        renderFun: .plot
+        clearWith: []
+...

@@ -1,0 +1,95 @@
+title: Emotion Detection
+name: emotiondetection
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Sentiment Data
+        children:
+          - type: VariablesListBox
+            name: sentiment_data
+            isTarget: true
+      - type: TargetLayoutBox
+        label: Splitting Variable
+        children:
+          - type: VariablesListBox
+            name: split_var
+            maxItemCount: 1
+            isTarget: true
+  - type: LayoutBox
+    margin: large
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        cell:
+          column: 0
+          row: 0
+        stretchFactor: 1
+        children:
+          - type: Label
+            label: Chart Type
+            children:
+              - type: RadioButton
+                name: default_bars
+                optionName: chart_type
+                optionPart: dodge
+              - type: RadioButton
+                name: stacked_bars
+                optionName: chart_type
+                optionPart: stack
+          - type: Label
+            label: Data Format
+            children:
+              - type: CheckBox
+                name: uncombine
+              - type: CheckBox
+                name: switch
+          - type: Label
+            label: Axis Options
+            children:
+              - type: CheckBox
+                name: disp_by_perc
+              - type: CheckBox
+                name: horizontal_bars
+      - type: LayoutBox
+        margin: large
+        cell:
+          column: 1
+          row: 0
+        stretchFactor: 1
+        children:
+          - type: Label
+            label: Labels
+            children:
+              - type: CheckBox
+                name: value_labels
+              - type: CheckBox
+                name: enable_component_axis
+                children:
+                  - type: TextBox
+                    name: component_axis
+                    format: string
+          - type: Label
+            label: Colors
+            children:
+              - type: ComboBox
+                name: palette_colors
+          - type: Label
+            label: Image Size
+            children:
+              - type: CheckBox
+                name: custom_img_size
+              - type: TextBox
+                name: custom_width
+                suffix: px
+                format: number
+              - type: TextBox
+                name: custom_height
+                suffix: px
+                format: number

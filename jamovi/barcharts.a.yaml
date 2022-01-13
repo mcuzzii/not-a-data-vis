@@ -1,0 +1,148 @@
+---
+name:  barcharts
+title: Bar Charts
+menuGroup: nadv
+version: '1.0.0'
+jas: '1.2'
+
+options:
+    - name: data
+      type: Data
+    
+    - name: vars
+      type: Variables
+      suggested: [ ordinal, nominal ]
+      permitted: [ factor]
+
+    - name: group
+      type: Variable
+      suggested: [ ordinal, nominal ]
+      permitted: [ factor ]
+
+    - name: format
+      type: List
+      options:
+        - title: Group by response variables
+          name: wide
+        - title: Panel by response variables
+          name: long
+      default: wide
+
+    - name: type
+      type: List
+      options:
+        - title: Default bars
+          name: grouped
+        - title: Stacked bars
+          name: stacked
+        - title: Diverging stacked bars
+          name: diverging
+      default: grouped
+      
+    - name: display
+      title: Value labels
+      type: Bool
+      default: false
+
+    - name: percent
+      title: Display by %
+      type: Bool
+      default: false
+    
+    - name: flip_axes
+      title: Horizontal bars
+      type: Bool
+      default: false
+    
+    - name: sort
+      title: Sort
+      type: Bool
+      default: false
+      
+    - name: items_title
+      title: Component axis title
+      type: Bool
+      default: true
+    
+    - name: items_name
+      title: Title
+      type: String
+      default: 'Survey items'
+    
+    - name: freq_title
+      title: Frequency axis title
+      type: Bool
+      default: true
+      
+    - name: showlegend
+      title: Legend
+      type: Bool
+      default: true
+      
+    - name: palcolor
+      title: 'Palette'
+      type: List
+      options:
+        - name: 'YlOrRd'
+          title: 'Hot'
+        - name: 'YlOrBr'
+          title: 'Cozy'
+        - name: 'YlGnBu'
+          title: 'Warm ocean'
+        - name: 'YlGn'
+          title: 'Meadows'
+        - name: 'Reds'
+          title: 'Reds'
+        - name: 'RdPu'
+          title: 'Fandango'
+        - name: 'Purples'
+          title: 'Eggplant'
+        - name: 'PuRd'
+          title: 'Purple Reds'
+        - name: 'PuBuGn'
+          title: 'Pearl'
+        - name: 'PuBu'
+          title: 'Sky'
+        - name: 'OrRd'
+          title: 'Warm'
+        - name: 'Oranges'
+          title: 'Canyon'
+        - name: 'Greys'
+          title: 'Limbo'
+        - name: 'Greens'
+          title: 'Leaf'
+        - name: 'GnBu'
+          title: 'Cyan'
+        - name: 'BuPu'
+          title: 'Violets'
+        - name: 'BuGn'
+          title: 'Rainforest'
+        - name: 'Blues'
+          title: 'Deep ocean'
+        - name: 'Spectral'
+          title: 'Spectral'
+        - name: 'RdYlGn'
+          title: 'Parrot'
+        - name: 'RdYlBu'
+          title: 'Nautical'
+      default: 'RdYlBu'
+      
+    - name: imgsizemode
+      type: List
+      options:
+        - title: Auto
+          name: automaticsize
+        - title: Custom
+          name: customsize
+      default: automaticsize
+    
+    - name: imgwidth
+      title: Width
+      type: Integer
+      default: 550
+    
+    - name: imgheight
+      title: Height
+      type: Integer
+      default: 300
+...

@@ -1,0 +1,11 @@
+Package: nadv
+Type: Package
+Title: Not A Data Vis
+Version: 0.2.0
+Author: Marcus Tornea <marcus.tornea@outlook.ph>
+Maintainer: Marcus Tornea <marcus.tornea@outlook.ph>
+Description: A categorical data visualization and text mining module installed in Jamovi.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: jmvcore (>= 0.8.5), R6, ggplot2, dplyr, ggpubr, tidyr, scales, RColorBrewer, sentimentr, wordcloud, ggridges, stringi, colorspace

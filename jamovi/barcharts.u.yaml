@@ -1,0 +1,146 @@
+title: Bar Charts
+name: barcharts
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Survey items
+        children:
+          - type: VariablesListBox
+            name: vars
+            isTarget: true
+      - type: TargetLayoutBox
+        label: Split by
+        children:
+          - type: VariablesListBox
+            name: group
+            maxItemCount: 1
+            isTarget: true
+  - type: CollapseBox
+    label: Plot settings
+    collapsed: true
+    children:
+      - type: Label
+        label: Data Format
+        children:
+          - type: RadioButton
+            name: format_long
+            optionName: format
+            optionPart: long
+          - type: RadioButton
+            name: format_wide
+            optionName: format
+            optionPart: wide
+      - type: Label
+        label: Chart Type
+        children:
+          - type: RadioButton
+            name: type_grouped
+            optionName: type
+            optionPart: grouped
+          - type: RadioButton
+            name: type_stacked
+            optionName: type
+            optionPart: stacked
+          - type: RadioButton
+            name: type_diverging
+            optionName: type
+            optionPart: diverging
+      - type: LayoutBox
+        margin: large
+        stretchFactor: 1
+        children:
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 0
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Axis Options
+                children:
+                  - type: CheckBox
+                    name: percent
+                  - type: CheckBox
+                    name: flip_axes
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 1
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Diverging Stacked Bars
+                children:
+                  - type: CheckBox
+                    name: sort
+  - type: CollapseBox
+    label: Appearance
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        stretchFactor: 1
+        children:
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 0
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Colors
+                children:
+                  - type: ComboBox
+                    name: palcolor
+              - type: Label
+                label: Show
+                children:
+                  - type: CheckBox
+                    name: display
+                  - type: CheckBox
+                    name: items_title
+                    children:
+                      - type: TextBox
+                        name: items_name
+                        format: string
+                  - type: CheckBox
+                    name: freq_title
+                  - type: CheckBox
+                    name: showlegend
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 1
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Image Size
+                children:
+                  - type: RadioButton
+                    name: sizemodeauto
+                    optionName: imgsizemode
+                    optionPart: automaticsize
+                  - type: RadioButton
+                    name: sizemodecustom
+                    optionName: imgsizemode
+                    optionPart: customsize
+                  - type: TextBox
+                    name: imgwidth
+                    suffix: 'px'
+                    format: number
+                    enable: (sizemodecustom)
+                  - type: TextBox
+                    name: imgheight
+                    suffix: 'px'
+                    format: number
+                    enable: (sizemodecustom)

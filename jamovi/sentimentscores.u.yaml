@@ -1,0 +1,128 @@
+title: Sentiment Scores
+name: sentimentscores
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Sentiment data
+        children:
+          - type: VariablesListBox
+            name: sentiment_data
+            isTarget: true
+      - type: TargetLayoutBox
+        label: Independent variable
+        children:
+          - type: VariablesListBox
+            name: iv
+            maxItemCount: 1
+            isTarget: true
+  - type: CollapseBox
+    label: Plot Settings
+    collapsed: false
+    children:
+      - type: LayoutBox
+        margin: large
+        stretchFactor: 1
+        children:
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 0
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Chart Type
+                children:
+                  - type: ComboBox
+                    name: chart_type
+              - type: Label
+                label: Averaging Method
+                children:
+                  - type: RadioButton
+                    name: avem_1
+                    optionName: averaging_method
+                    optionPart: default_averaging
+                  - type: RadioButton
+                    name: avem_2
+                    optionName: averaging_method
+                    optionPart: courtesy_reduction
+                  - type: RadioButton
+                    name: avem_3
+                    optionName: averaging_method
+                    optionPart: neutrality_reduction
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 1
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Scoring Options
+                children:
+                  - type: RadioButton
+                    name: so_1
+                    optionName: scoring_method
+                    optionPart: by_sentence
+                  - type: RadioButton
+                    name: so_2
+                    optionName: scoring_method
+                    optionPart: by_cell
+                  - type: RadioButton
+                    name: so_3
+                    optionName: scoring_method
+                    optionPart: by_row
+  - type: CollapseBox
+    label: Appearance
+    collapsed: false
+    children:
+      - type: LayoutBox
+        margin: large
+        stretchFactor: 1
+        children:
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 0
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Display Options
+                children:
+                  - type: CheckBox
+                    name: uncombine
+                  - type: CheckBox
+                    name: split_by_iv
+                  - type: CheckBox
+                    name: facet_mode
+                  - type: CheckBox
+                    name: add_graphics
+                  - type: ComboBox
+                    name: palette_colors
+          - type: LayoutBox
+            margin: large
+            cell:
+              column: 1
+              row: 0
+            stretchFactor: 1
+            children:
+              - type: Label
+                label: Image Size
+                children: 
+                  - type: CheckBox
+                    name: custom_img_size
+                  - type: TextBox
+                    name: custom_width
+                    suffix: 'px'
+                    format: number
+                  - type: TextBox
+                    name: custom_height
+                    suffix: 'px'
+                    format: number

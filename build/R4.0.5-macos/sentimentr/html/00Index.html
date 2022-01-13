@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>R: Calculate Text Polarity Sentiment</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+<h1> Calculate Text Polarity Sentiment
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;sentimentr&rsquo; version 2.7.1</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../NEWS">Package NEWS</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="sentimentr.html">sentimentr-package</a></td>
+<td>Calculate Text Polarity Sentiment</td></tr>
+<tr><td style="width: 25%;"><a href="as_key.html">as_key</a></td>
+<td>Create/Manipulate Hash Keys</td></tr>
+<tr><td style="width: 25%;"><a href="sentimentr_data.html">available_data</a></td>
+<td>Get Available Data</td></tr>
+<tr><td style="width: 25%;"><a href="average_downweighted_zero.html">average_downweighted_zero</a></td>
+<td>Downweighted Zeros Averaging</td></tr>
+<tr><td style="width: 25%;"><a href="average_downweighted_zero.html">average_mean</a></td>
+<td>Downweighted Zeros Averaging</td></tr>
+<tr><td style="width: 25%;"><a href="average_downweighted_zero.html">average_weighted_mixed_sentiment</a></td>
+<td>Downweighted Zeros Averaging</td></tr>
+<tr><td style="width: 25%;"><a href="combine_data.html">combine_data</a></td>
+<td>Combine 'sentimentr"s Sentiment Data Sets</td></tr>
+<tr><td style="width: 25%;"><a href="course_evaluations.html">course_evaluations</a></td>
+<td>Student Course Evaluation Comments</td></tr>
+<tr><td style="width: 25%;"><a href="crowdflower_deflategate.html">crowdflower_deflategate</a></td>
+<td>Twitter Tweets About the Deflategate</td></tr>
+<tr><td style="width: 25%;"><a href="crowdflower_products.html">crowdflower_products</a></td>
+<td>Twitter Tweets About the Products</td></tr>
+<tr><td style="width: 25%;"><a href="crowdflower_self_driving_cars.html">crowdflower_self_driving_cars</a></td>
+<td>Twitter Tweets About Self Driving Cars</td></tr>
+<tr><td style="width: 25%;"><a href="crowdflower_weather.html">crowdflower_weather</a></td>
+<td>Twitter Tweets About the Weather</td></tr>
+<tr><td style="width: 25%;"><a href="emotion.html">emotion</a></td>
+<td>Compute Emotion Rate</td></tr>
+<tr><td style="width: 25%;"><a href="emotion_by.html">emotion_by</a></td>
+<td>Emotion Rate By Groups</td></tr>
+<tr><td style="width: 25%;"><a href="extract_emotion_terms.html">extract_emotion_terms</a></td>
+<td>Extract Emotion Words</td></tr>
+<tr><td style="width: 25%;"><a href="extract_profanity_terms.html">extract_profanity_terms</a></td>
+<td>Extract Profanity Words</td></tr>
+<tr><td style="width: 25%;"><a href="extract_sentiment_terms.html">extract_sentiment_terms</a></td>
+<td>Extract Sentiment Words</td></tr>
+<tr><td style="width: 25%;"><a href="general_rescale.html">general_rescale</a></td>
+<td>Rescale a Numeric Vector</td></tr>
+<tr><td style="width: 25%;"><a href="get_sentences.html">get_sentences</a></td>
+<td>Get Sentences</td></tr>
+<tr><td style="width: 25%;"><a href="get_sentences2.html">get_sentences2</a></td>
+<td>Get Sentences (Deprecated)</td></tr>
+<tr><td style="width: 25%;"><a href="highlight.html">highlight</a></td>
+<td>Polarity Text Highlighting</td></tr>
+<tr><td style="width: 25%;"><a href="hotel_reviews.html">hotel_reviews</a></td>
+<td>Hotel Reviews</td></tr>
+<tr><td style="width: 25%;"><a href="hu_liu_apex_reviews.html">hu_liu_apex_reviews</a></td>
+<td>Apex AD2600 Progressive-scan DVD player Product Reviews From Amazon</td></tr>
+<tr><td style="width: 25%;"><a href="hu_liu_cannon_reviews.html">hu_liu_cannon_reviews</a></td>
+<td>Cannon G3 Camera Product Reviews From Amazon</td></tr>
+<tr><td style="width: 25%;"><a href="hu_liu_jukebox_reviews.html">hu_liu_jukebox_reviews</a></td>
+<td>Creative Labs Nomad Jukebox Zen Xtra 40GB Product Reviews From Amazon</td></tr>
+<tr><td style="width: 25%;"><a href="hu_liu_nikon_reviews.html">hu_liu_nikon_reviews</a></td>
+<td>Nikon Coolpix 4300 Product Reviews From Amazon</td></tr>
+<tr><td style="width: 25%;"><a href="hu_liu_nokia_reviews.html">hu_liu_nokia_reviews</a></td>
+<td>Nokia 6610 Product Reviews From Amazon</td></tr>
+<tr><td style="width: 25%;"><a href="as_key.html">is_key</a></td>
+<td>Create/Manipulate Hash Keys</td></tr>
+<tr><td style="width: 25%;"><a href="kaggle_movie_reviews.html">kaggle_movie_reviews</a></td>
+<td>Movie Reviews</td></tr>
+<tr><td style="width: 25%;"><a href="kotzias_reviews_amazon_cells.html">kotzias_reviews_amazon_cells</a></td>
+<td>Kotzias Reviews: Amazon Cells</td></tr>
+<tr><td style="width: 25%;"><a href="kotzias_reviews_imdb.html">kotzias_reviews_imdb</a></td>
+<td>Kotzias Reviews: IMBD</td></tr>
+<tr><td style="width: 25%;"><a href="kotzias_reviews_yelp.html">kotzias_reviews_yelp</a></td>
+<td>Kotzias Reviews: Yelp</td></tr>
+<tr><td style="width: 25%;"><a href="nyt_articles.html">nyt_articles</a></td>
+<td>Sentiment Scored New York Times Articles</td></tr>
+<tr><td style="width: 25%;"><a href="sentimentr.html">package-sentiment</a></td>
+<td>Calculate Text Polarity Sentiment</td></tr>
+<tr><td style="width: 25%;"><a href="plot.emotion.html">plot.emotion</a></td>
+<td>Plots a emotion object</td></tr>
+<tr><td style="width: 25%;"><a href="plot.emotion_by.html">plot.emotion_by</a></td>
+<td>Plots a emotion_by object</td></tr>
+<tr><td style="width: 25%;"><a href="plot.profanity.html">plot.profanity</a></td>
+<td>Plots a profanity object</td></tr>
+<tr><td style="width: 25%;"><a href="plot.profanity_by.html">plot.profanity_by</a></td>
+<td>Plots a profanity_by object</td></tr>
+<tr><td style="width: 25%;"><a href="plot.sentiment.html">plot.sentiment</a></td>
+<td>Plots a sentiment object</td></tr>
+<tr><td style="width: 25%;"><a href="plot.sentiment_by.html">plot.sentiment_by</a></td>
+<td>Plots a sentiment_by object</td></tr>
+<tr><td style="width: 25%;"><a href="presidential_debates_2012.html">presidential_debates_2012</a></td>
+<td>2012 U.S. Presidential Debates</td></tr>
+<tr><td style="width: 25%;"><a href="print.extract_emotion_terms.html">print.extract_emotion_terms</a></td>
+<td>Prints an extract_emotion_terms Object</td></tr>
+<tr><td style="width: 25%;"><a href="print.extract_profanity_terms.html">print.extract_profanity_terms</a></td>
+<td>Prints an extract_profanity_terms Object</td></tr>
+<tr><td style="width: 25%;"><a href="print.extract_sentiment_terms.html">print.extract_sentiment_terms</a></td>
+<td>Prints an extract_sentiment_terms Object</td></tr>
+<tr><td style="width: 25%;"><a href="print.validate_sentiment.html">print.validate_sentiment</a></td>
+<td>Prints a validate_sentiment Object</td></tr>
+<tr><td style="width: 25%;"><a href="profanity.html">profanity</a></td>
+<td>Compute Profanity Rate</td></tr>
+<tr><td style="width: 25%;"><a href="profanity_by.html">profanity_by</a></td>
+<td>Profanity Rate By Groups</td></tr>
+<tr><td style="width: 25%;"><a href="sam_i_am.html">sam_i_am</a></td>
+<td>Sam I Am Text</td></tr>
+<tr><td style="width: 25%;"><a href="sentiment.html">sentiment</a></td>
+<td>Polarity Score (Sentiment Analysis)</td></tr>
+<tr><td style="width: 25%;"><a href="sentimentr.html">sentimentr</a></td>
+<td>Calculate Text Polarity Sentiment</td></tr>
+<tr><td style="width: 25%;"><a href="sentimentr_data.html">sentimentr_data</a></td>
+<td>Get Available Data</td></tr>
+<tr><td style="width: 25%;"><a href="sentiment_attributes.html">sentiment_attributes</a></td>
+<td>Extract Sentiment Attributes from Text</td></tr>
+<tr><td style="width: 25%;"><a href="sentiment_by.html">sentiment_by</a></td>
+<td>Polarity Score (Sentiment Analysis) By Groups</td></tr>
+<tr><td style="width: 25%;"><a href="uncombine.html">uncombine</a></td>
+<td>Ungroup a 'sentiment_by' Object to the Sentence Level</td></tr>
+<tr><td style="width: 25%;"><a href="as_key.html">update_key</a></td>
+<td>Create/Manipulate Hash Keys</td></tr>
+<tr><td style="width: 25%;"><a href="as_key.html">update_polarity_table</a></td>
+<td>Create/Manipulate Hash Keys</td></tr>
+<tr><td style="width: 25%;"><a href="as_key.html">update_valence_shifter_table</a></td>
+<td>Create/Manipulate Hash Keys</td></tr>
+<tr><td style="width: 25%;"><a href="validate_sentiment.html">validate_sentiment</a></td>
+<td>Validate Sentiment Score Sign Against Known Results</td></tr>
+</table>
+</body></html>

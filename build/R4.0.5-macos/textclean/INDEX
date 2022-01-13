@@ -1,0 +1,51 @@
+DATA                    Fictitious Classroom Dialogue
+add_comma_space         Ensure Space After Comma
+add_missing_endmark     Add Missing Endmarks
+check_text              Check Text For Potential Problems
+drop_element            Filter Elements in a Vetor
+drop_row                Filter Rows That Contain Markers
+fgsub                   Replace a Regex with an Functional Operation on
+                        the Regex Match
+filter_element          Remove Elements in a Vetor
+filter_row              Remove Rows That Contain Markers
+has_endmark             Test for Incomplete Sentences
+make_plural             Make Plural (or Verb to Singular) Versions of
+                        Words
+match_tokens            Find Tokens that Match a Regex
+mgsub                   Multiple 'gsub'
+print.check_text        Prints a check_text Object
+print.sub_holder        Prints a sub_holder object
+print.which_are_locs    Prints a which_are_locs Object
+replace_contraction     Replace Contractions
+replace_date            Replace Dates With Words
+replace_email           Replace Email Addresses
+replace_emoji           Replace Emojis With Words/Identifier
+replace_emoticon        Replace Emoticons With Words
+replace_grade           Replace Grades With Words
+replace_hash            Replace Hashes
+replace_html            Replace HTML Markup
+replace_incomplete      Denote Incomplete End Marks With "|"
+replace_internet_slang
+                        Replace Internet Slang
+replace_kern            Replace Kerned (Spaced) with No Space Version
+replace_money           Replace Money With Words
+replace_names           Replace First/Last Names
+replace_non_ascii       Replace Common Non-ASCII Characters
+replace_number          Replace Numbers With Text Representation
+replace_ordinal         Replace Mixed Ordinal Numbers With Text
+                        Representation
+replace_rating          Replace Ratings With Words
+replace_symbol          Replace Symbols With Word Equivalents
+replace_tag             Replace Handle Tags
+replace_time            Replace Time Stamps With Words
+replace_to              Grab Begin/End of String to/from Character
+replace_tokens          Replace Tokens
+replace_url             Replace URLs
+replace_white           Remove Escaped Characters
+replace_word_elongation
+                        Replace Word Elongations
+strip                   Strip Text
+sub_holder              Hold the Place of Characters Prior to Subbing
+swap                    Swap Two Patterns Simultaneously
+textclean               Text Cleaning Tools
+which_are               Detect/Locate Potential Non-Normalized Text

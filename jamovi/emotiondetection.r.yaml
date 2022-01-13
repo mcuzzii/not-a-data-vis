@@ -1,0 +1,21 @@
+---
+name:  emotiondetection
+title: Emotion Detection
+jrs:   '1.1'
+
+items:
+    - name: debug
+      title: Debugging
+      type: Preformatted
+      
+    - name:  text
+      title: Emotion Detection
+      visible: FALSE
+      type:  Html
+    
+    - name: plot
+      title: Plot
+      visible: FALSE
+      type: Image
+      renderFun: .plot
+...

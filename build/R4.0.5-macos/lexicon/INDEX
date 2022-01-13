@@ -1,0 +1,78 @@
+available_data          Get Available 'lexicon' Data
+cliches                 Common Cliches
+common_names            First Names (U.S.)
+constraining_loughran_mcdonald
+                        Loughran-McDonald Constraining Words
+emojis_sentiment        Emoji Sentiment Data
+freq_first_names        Frequent U.S. First Names
+freq_last_names         Frequent U.S. Last Names
+function_words          Function Words
+grady_augmented         Augmented List of Grady Ward's English Words
+                        and Mark Kantrowitz's Names List
+hash_emojis             Emoji Description Lookup Table
+hash_emojis_identifier
+                        Emoji Identifier Lookup Table
+hash_emoticons          Emoticons
+hash_grady_pos          Grady Ward's Moby Parts of Speech
+hash_internet_slang     List of Internet Slang and Corresponding
+                        Meanings
+hash_lemmas             Lemmatization List
+hash_nrc_emotions       NRC Emotion Table
+hash_sentiment_emojis   Emoji Sentiment Polarity Lookup Table
+hash_sentiment_huliu    Hu Liu Polarity Lookup Table
+hash_sentiment_jockers
+                        Jockers Polarity Lookup Table
+hash_sentiment_jockers_rinker
+                        Combined Jockers & Rinker Polarity Lookup Table
+hash_sentiment_loughran_mcdonald
+                        Loughran-McDonald Polarity Table
+hash_sentiment_nrc      NRC Sentiment Polarity Table
+hash_sentiment_senticnet
+                        Augmented SenticNet Polarity Table
+hash_sentiment_sentiword
+                        Augmented Sentiword Polarity Table
+hash_sentiment_slangsd
+                        SlangSD Sentiment Polarity Table
+hash_sentiment_socal_google
+                        SO-CAL Google Polarity Table
+hash_valence_shifters   Valence Shifters
+key_contractions        Contraction Conversions
+key_corporate_social_responsibility
+                        Nadra Pencle and Irina Mălăescu's Corporate
+                        Social Responsibility Dictionary
+key_grade               Grades Data Set
+key_rating              Ratings Data Set
+key_regressive_imagery
+                        Colin Martindale's English Regressive Imagery
+                        Dictionary
+key_sentiment_jockers   Jockers Sentiment Key
+lexicon                 Lexicons for Text Analysis
+modal_loughran_mcdonald
+                        Loughran-McDonald Modal List
+nrc_emotions            NRC Emotions
+pos_action_verb         Action Word List
+pos_df_irregular_nouns
+                        Irregular Nouns Word Dataframe
+pos_df_pronouns         Pronouns
+pos_interjections       Interjections
+pos_preposition         Preposition Words
+profanity_alvarez       Alejandro U. Alvarez's List of Profane Words
+profanity_arr_bad       Stackoverflow user2592414's List of Profane
+                        Words
+profanity_banned        bannedwordlist.com's List of Profane Words
+profanity_racist        Titus Wormer's List of Racist Words
+profanity_zac_anger     Zac Anger's List of Profane Words
+sw_dolch                Leveled Dolch List of 220 Common Words
+sw_fry_100              Fry's 100 Most Commonly Used English Words
+sw_fry_1000             Fry's 1000 Most Commonly Used English Words
+sw_fry_200              Fry's 200 Most Commonly Used English Words
+sw_fry_25               Fry's 25 Most Commonly Used English Words
+sw_jockers              Matthew Jocker's Expanded Topic Modeling
+                        Stopword List
+sw_loughran_mcdonald_long
+                        Loughran-McDonald Long Stopword List
+sw_loughran_mcdonald_short
+                        Loughran-McDonald Short Stopword List
+sw_lucene               Lucene Stopword List
+sw_mallet               MALLET Stopword List
+sw_python               Python Stopword List
