@@ -145,6 +145,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
       
       if (conditions$box_uncombined_iv_switched_facets) {
         
+        legend_size <- legend_row_width * ceiling(length(unique(iv_vector)) / 5)
         blank_spaces <- 25
         group_size <- box_width * length(unique(iv_vector))
         n_panel_rows <- ceiling(length(unique(data$prompt)) / 2)
