@@ -837,7 +837,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = iv_values,
                                                    colour = iv_values,
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::facet_wrap(~ prompt, ncol = 2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
@@ -859,7 +859,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = iv_values,
                                                    colour = iv_values,
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
@@ -877,7 +877,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = prompt,
                                                    colour = prompt,
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::facet_wrap(~ iv_values, ncol = 2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
@@ -899,7 +899,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = prompt,
                                                    colour = prompt,
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
@@ -917,7 +917,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = "",
                                                    colour = "",
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::facet_wrap(~ prompt, ncol = 2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
@@ -939,7 +939,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = "",
                                                    colour = "",
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
@@ -957,7 +957,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = prompt,
                                                    colour = prompt,
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
@@ -977,7 +977,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = iv_values,
                                                    colour = iv_values,
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
@@ -997,7 +997,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = "",
                                                    colour = "",
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::facet_wrap(~ iv_values, ncol = 2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
@@ -1019,7 +1019,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = "",
                                                    colour = "",
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
@@ -1037,7 +1037,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
                                                    fill = "",
                                                    colour = "",
                                                    height = stat(density))) +
-          ggridges::geom_density_ridges(stat = "density", alpha = 0.5) +
+          ggridges::geom_density_ridges(stat = "density", alpha = 0.2) +
           ggplot2::scale_fill_manual(values = pal) +
           ggplot2::scale_colour_manual(values = colorspace::darken(pal,
                                                                    amount = 0.3,
