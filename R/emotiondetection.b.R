@@ -19,6 +19,14 @@ emotiondetectionClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cl
       custom_img_size <- self$options$custom_img_size
       custom_width <- self$options$custom_width
       custom_height <- self$options$custom_height
+      drop <- self$options$drop
+      
+      # If the user wants to modify the lexicon, do this.
+      if (grepl("[A-Za-z]", drop)) {
+        words_vect <- unlist(strsplit(gsub(" ", "", tolower(drop)), ","))
+        emotion_lex <- lexicon::hash_nrc_emotions[!(lexicon::hash_nrc_emotions$token %in% words_vect), ] %>%
+          data.table::setkey(token)
+      } else emotion_lex <- lexicon::hash_nrc_emotions
       
       # Function for printing warnings on the screen.
       print_warning <- function(string) {
@@ -71,7 +79,7 @@ emotiondetectionClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cl
       # Extract emotion counts per sentence.
       emotion_data <- data$response %>%
         sentimentr::get_sentences() %>%
-        sentimentr::emotion()
+        sentimentr::emotion(emotion_dt = emotion_lex)
       
       # Sum emotion counts by groups according to user input.
       group_vars <- c()

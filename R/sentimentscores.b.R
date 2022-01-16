@@ -470,6 +470,14 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
       custom_img_size <- self$options$custom_img_size
       custom_width <- self$options$custom_width
       custom_height <- self$options$custom_height
+      drop <- self$options$drop
+      
+      # If the user wants to modify the lexicon, do this.
+      if (grepl("[A-Za-z]", drop)) {
+        words_vect <- unlist(strsplit(gsub(" ", "", tolower(drop)), ","))
+        lex <- lexicon::hash_sentiment_jockers_rinker %>%
+          sentimentr::update_key(drop = words_vect)
+      } else lex <- lexicon::hash_sentiment_jockers_rinker
       
       # Determine which averaging function to use.
       ave_func <- switch(averaging_method,
@@ -484,7 +492,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
           # Calculate sentiment scores for the open text Independent Variable.
           iv_sentiment <- as.character(iv_vector) %>%
             sentimentr::get_sentences() %>%
-            sentimentr::sentiment_by(averaging.function = ave_func)
+            sentimentr::sentiment_by(polarity_dt = lex, averaging.function = ave_func)
           data <- data %>%
             dplyr::mutate(iv_values = as.numeric(iv_sentiment$ave_sentiment[row_num]))
         } else {
@@ -502,7 +510,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
       if (scoring_method == "by_sentence") {
         sentiment_scores <- data$response %>%
           sentimentr::get_sentences() %>%
-          sentimentr::sentiment()
+          sentimentr::sentiment(polarity_dt = lex)
         if(!is.null(iv)) {
           data <- sentiment_scores %>%
             dplyr::mutate(prompt = data$prompt[element_id],
@@ -514,7 +522,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
       } else if (scoring_method == "by_cell") {
         sentiment_scores <- data$response %>%
           sentimentr::get_sentences() %>%
-          sentimentr::sentiment_by(averaging.function = ave_func) %>%
+          sentimentr::sentiment_by(polarity_dt = lex, averaging.function = ave_func) %>%
           dplyr::rename(sentiment = ave_sentiment)
         if (!is.null(iv)) {
           data <- sentiment_scores %>%
@@ -526,7 +534,7 @@ sentimentscoresClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
       } else {
         sentiment_scores <- data %>%
           sentimentr::get_sentences() %>%
-          sentimentr::sentiment_by(by = c("row_num"), averaging_function=ave_func) %>%
+          sentimentr::sentiment_by(polarity_dt = lex, by = c("row_num"), averaging_function=ave_func) %>%
           dplyr::rename(sentiment = ave_sentiment)
         if (!is.null(iv)) {
           data <- sentiment_scores %>%

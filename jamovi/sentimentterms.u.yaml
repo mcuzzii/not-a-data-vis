@@ -91,3 +91,17 @@ children:
                 name: custom_height
                 suffix: 'px'
                 format: number
+  - type: CollapseBox
+    label: Advanced
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        stretchFactor: 1
+        children:
+          - type: Label
+            label: Lexicon Modifications
+            children:
+              - type: TextBox
+                name: drop
+                format: string

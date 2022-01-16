@@ -3,7 +3,7 @@
 
 'use strict';
 
-const options = [{"name":"data","type":"Data"},{"name":"sentiment_data","type":"Variables","suggested":["nominal"],"permitted":["factor"]},{"name":"split_var","type":"Variable","suggested":["nominal","ordinal"],"permitted":["factor"]},{"name":"chart_type","type":"List","options":[{"title":"Default bars","name":"dodge"},{"title":"Stacked bars","name":"stack"}],"default":"dodge"},{"name":"uncombine","title":"Uncombine","type":"Bool","default":false},{"name":"switch","title":"Switch splitting roles","type":"Bool","default":false},{"name":"disp_by_perc","title":"Percentage scale","type":"Bool","default":false},{"name":"horizontal_bars","title":"Horizontal bars","type":"Bool","default":false},{"name":"palette_colors","type":"List","title":"Palette","options":[{"name":"YlOrRd","title":"Hot"},{"name":"YlOrBr","title":"Cozy"},{"name":"YlGnBu","title":"Warm ocean"},{"name":"YlGn","title":"Meadows"},{"name":"Reds","title":"Reds"},{"name":"RdPu","title":"Fandango"},{"name":"Purples","title":"Eggplant"},{"name":"PuRd","title":"Purple Reds"},{"name":"PuBuGn","title":"Pearl"},{"name":"PuBu","title":"Sky"},{"name":"OrRd","title":"Warm"},{"name":"Oranges","title":"Canyon"},{"name":"Greys","title":"Limbo"},{"name":"Greens","title":"Leaf"},{"name":"GnBu","title":"Cyan"},{"name":"BuPu","title":"Violets"},{"name":"BuGn","title":"Rainforest"},{"name":"Blues","title":"Deep ocean"},{"name":"Spectral","title":"Spectral"},{"name":"RdYlGn","title":"Parrot"},{"name":"RdYlBu","title":"Nautical"}],"default":"RdYlBu"},{"name":"value_labels","title":"Value labels","type":"Bool","default":false},{"name":"enable_component_axis","title":"Component axis title","type":"Bool","default":true},{"name":"component_axis","title":"Title","type":"String","default":"Survey items"},{"name":"custom_img_size","title":"Custom","type":"Bool","default":false},{"name":"custom_width","title":"Width","type":"Integer","default":550},{"name":"custom_height","title":"Height","type":"Integer","default":400}];
+const options = [{"name":"data","type":"Data"},{"name":"sentiment_data","type":"Variables","suggested":["nominal"],"permitted":["factor"]},{"name":"split_var","type":"Variable","suggested":["nominal","ordinal"],"permitted":["factor"]},{"name":"chart_type","type":"List","options":[{"title":"Default bars","name":"dodge"},{"title":"Stacked bars","name":"stack"}],"default":"dodge"},{"name":"uncombine","title":"Uncombine","type":"Bool","default":false},{"name":"switch","title":"Switch splitting roles","type":"Bool","default":false},{"name":"disp_by_perc","title":"Percentage scale","type":"Bool","default":false},{"name":"horizontal_bars","title":"Horizontal bars","type":"Bool","default":false},{"name":"palette_colors","type":"List","title":"Palette","options":[{"name":"YlOrRd","title":"Hot"},{"name":"YlOrBr","title":"Cozy"},{"name":"YlGnBu","title":"Warm ocean"},{"name":"YlGn","title":"Meadows"},{"name":"Reds","title":"Reds"},{"name":"RdPu","title":"Fandango"},{"name":"Purples","title":"Eggplant"},{"name":"PuRd","title":"Purple Reds"},{"name":"PuBuGn","title":"Pearl"},{"name":"PuBu","title":"Sky"},{"name":"OrRd","title":"Warm"},{"name":"Oranges","title":"Canyon"},{"name":"Greys","title":"Limbo"},{"name":"Greens","title":"Leaf"},{"name":"GnBu","title":"Cyan"},{"name":"BuPu","title":"Violets"},{"name":"BuGn","title":"Rainforest"},{"name":"Blues","title":"Deep ocean"},{"name":"Spectral","title":"Spectral"},{"name":"RdYlGn","title":"Parrot"},{"name":"RdYlBu","title":"Nautical"}],"default":"RdYlBu"},{"name":"value_labels","title":"Value labels","type":"Bool","default":false},{"name":"enable_component_axis","title":"Component axis title","type":"Bool","default":true},{"name":"component_axis","title":"Title","type":"String","default":"Survey items"},{"name":"custom_img_size","title":"Custom","type":"Bool","default":false},{"name":"custom_width","title":"Width","type":"Integer","default":550},{"name":"custom_height","title":"Height","type":"Integer","default":400},{"name":"drop","title":"Drop tokens","type":"String","default":""}];
 
 const view = function() {
     
@@ -198,6 +198,35 @@ view.layout = ui.extend({
 									name: "custom_height",
 									suffix: "px",
 									format: FormatDef.number
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			type: DefaultControls.CollapseBox,
+			typeName: 'CollapseBox',
+			label: "Advanced",
+			collapsed: true,
+			controls: [
+				{
+					type: DefaultControls.LayoutBox,
+					typeName: 'LayoutBox',
+					margin: "large",
+					stretchFactor: 1,
+					controls: [
+						{
+							type: DefaultControls.Label,
+							typeName: 'Label',
+							label: "Lexicon Modifications",
+							controls: [
+								{
+									type: DefaultControls.TextBox,
+									typeName: 'TextBox',
+									name: "drop",
+									format: FormatDef.string
 								}
 							]
 						}

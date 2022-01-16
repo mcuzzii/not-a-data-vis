@@ -19,7 +19,8 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
             component_axis = "Survey items",
             custom_img_size = FALSE,
             custom_width = 550,
-            custom_height = 400, ...) {
+            custom_height = 400,
+            drop = "", ...) {
 
             super$initialize(
                 package="nadv",
@@ -115,6 +116,10 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
                 "custom_height",
                 custom_height,
                 default=400)
+            private$..drop <- jmvcore::OptionString$new(
+                "drop",
+                drop,
+                default="")
 
             self$.addOption(private$..sentiment_data)
             self$.addOption(private$..split_var)
@@ -130,6 +135,7 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
             self$.addOption(private$..custom_img_size)
             self$.addOption(private$..custom_width)
             self$.addOption(private$..custom_height)
+            self$.addOption(private$..drop)
         }),
     active = list(
         sentiment_data = function() private$..sentiment_data$value,
@@ -145,7 +151,8 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
         component_axis = function() private$..component_axis$value,
         custom_img_size = function() private$..custom_img_size$value,
         custom_width = function() private$..custom_width$value,
-        custom_height = function() private$..custom_height$value),
+        custom_height = function() private$..custom_height$value,
+        drop = function() private$..drop$value),
     private = list(
         ..sentiment_data = NA,
         ..split_var = NA,
@@ -160,7 +167,8 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
         ..component_axis = NA,
         ..custom_img_size = NA,
         ..custom_width = NA,
-        ..custom_height = NA)
+        ..custom_height = NA,
+        ..drop = NA)
 )
 
 emotiondetectionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -231,6 +239,7 @@ emotiondetectionBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cla
 #' @param custom_img_size .
 #' @param custom_width .
 #' @param custom_height .
+#' @param drop .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$debug} \tab \tab \tab \tab \tab a preformatted \cr
@@ -254,7 +263,8 @@ emotiondetection <- function(
     component_axis = "Survey items",
     custom_img_size = FALSE,
     custom_width = 550,
-    custom_height = 400) {
+    custom_height = 400,
+    drop = "") {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("emotiondetection requires jmvcore to be installed (restart may be required)")
@@ -284,7 +294,8 @@ emotiondetection <- function(
         component_axis = component_axis,
         custom_img_size = custom_img_size,
         custom_width = custom_width,
-        custom_height = custom_height)
+        custom_height = custom_height,
+        drop = drop)
 
     analysis <- emotiondetectionClass$new(
         options = options,

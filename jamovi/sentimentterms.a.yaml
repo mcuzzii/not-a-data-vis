@@ -164,4 +164,9 @@ options:
       title: Height
       type: Integer
       default: 400
+    
+    - name: drop
+      title: Drop tokens
+      type: String
+      default: ''
 ...

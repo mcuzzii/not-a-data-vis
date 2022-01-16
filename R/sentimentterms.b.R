@@ -123,17 +123,30 @@ sentimenttermsClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Clas
       palette_colors <- self$options$palette_colors
       scale_percentage <- self$options$scale_percentage
       max_words <- self$options$max_words
+      drop <- self$options$drop
+      
+      # If the user wants to modify the lexicon, do this.
+      if (grepl("[A-Za-z]", drop)) {
+        words_vect <- unlist(strsplit(gsub(" ", "", tolower(drop)), ","))
+        sentiment_lex <- lexicon::hash_sentiment_jockers_rinker %>%
+          sentimentr::update_key(drop = words_vect)
+        emotion_lex <- lexicon::hash_nrc_emotions[!(lexicon::hash_nrc_emotions$token %in% words_vect), ] %>%
+          data.table::setkey(token)
+      } else {
+        sentiment_lex <- lexicon::hash_sentiment_jockers_rinker
+        emotion_lex <- lexicon::hash_nrc_emotions
+      }
       
       # Function for extracting a table of word frequencies
       word_frequencies <- function(char_vector) {
         if (sentiment_type %in% c("all", "positive", "negative")) {
           dataset <- char_vector %>%
             sentimentr::get_sentences() %>%
-            sentimentr::extract_sentiment_terms()
+            sentimentr::extract_sentiment_terms(polarity_dt = sentiment_lex)
         } else {
           dataset <- char_vector %>%
             sentimentr::get_sentences() %>%
-            sentimentr::extract_emotion_terms()
+            sentimentr::extract_emotion_terms(emotion_dt = emotion_lex)
         }
         
         dataset <- attributes(dataset)$counts

@@ -18,7 +18,8 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
             max_words = 100,
             custom_img_size = FALSE,
             custom_width = 550,
-            custom_height = 400, ...) {
+            custom_height = 400,
+            drop = "", ...) {
 
             super$initialize(
                 package="nadv",
@@ -136,6 +137,10 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
                 "custom_height",
                 custom_height,
                 default=400)
+            private$..drop <- jmvcore::OptionString$new(
+                "drop",
+                drop,
+                default="")
 
             self$.addOption(private$..sentiment_data)
             self$.addOption(private$..split_var)
@@ -150,6 +155,7 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
             self$.addOption(private$..custom_img_size)
             self$.addOption(private$..custom_width)
             self$.addOption(private$..custom_height)
+            self$.addOption(private$..drop)
         }),
     active = list(
         sentiment_data = function() private$..sentiment_data$value,
@@ -164,7 +170,8 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
         max_words = function() private$..max_words$value,
         custom_img_size = function() private$..custom_img_size$value,
         custom_width = function() private$..custom_width$value,
-        custom_height = function() private$..custom_height$value),
+        custom_height = function() private$..custom_height$value,
+        drop = function() private$..drop$value),
     private = list(
         ..sentiment_data = NA,
         ..split_var = NA,
@@ -178,7 +185,8 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
         ..max_words = NA,
         ..custom_img_size = NA,
         ..custom_width = NA,
-        ..custom_height = NA)
+        ..custom_height = NA,
+        ..drop = NA)
 )
 
 sentimenttermsResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -246,6 +254,7 @@ sentimenttermsBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #' @param custom_img_size .
 #' @param custom_width .
 #' @param custom_height .
+#' @param drop .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$text} \tab \tab \tab \tab \tab a html \cr
@@ -267,7 +276,8 @@ sentimentterms <- function(
     max_words = 100,
     custom_img_size = FALSE,
     custom_width = 550,
-    custom_height = 400) {
+    custom_height = 400,
+    drop = "") {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("sentimentterms requires jmvcore to be installed (restart may be required)")
@@ -296,7 +306,8 @@ sentimentterms <- function(
         max_words = max_words,
         custom_img_size = custom_img_size,
         custom_width = custom_width,
-        custom_height = custom_height)
+        custom_height = custom_height,
+        drop = drop)
 
     analysis <- sentimenttermsClass$new(
         options = options,

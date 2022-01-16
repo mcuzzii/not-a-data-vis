@@ -132,4 +132,9 @@ options:
           title: Parrot
         - name: RdYlBu
           title: Nautical
+    
+    - name: drop
+      title: Drop tokens
+      type: String
+      default: ''
 ...

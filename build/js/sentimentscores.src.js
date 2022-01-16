@@ -3,7 +3,7 @@
 
 'use strict';
 
-const options = [{"name":"data","type":"Data"},{"name":"sentiment_data","type":"Variables","suggested":["nominal"],"permitted":["factor"]},{"name":"iv","type":"Variable","suggested":["nominal","ordinal","continuous"],"permitted":["factor","numeric"]},{"name":"chart_type","type":"List","options":[{"title":"Box plots","name":"ct_boxplots"},{"title":"Density plots","name":"ct_density"},{"title":"Scatterplots","name":"ct_scatterplots"}]},{"name":"scoring_method","type":"List","options":[{"title":"By sentence","name":"by_sentence"},{"title":"By cell","name":"by_cell"},{"title":"By row","name":"by_row"}],"default":"by_sentence"},{"name":"averaging_method","type":"List","options":[{"title":"Default","name":"default_averaging"},{"title":"Courtesy reduction","name":"courtesy_reduction"},{"title":"Neutrality reduction","name":"neutrality_reduction"}],"default":"default_averaging"},{"name":"uncombine","type":"Bool","title":"Uncombine","default":false},{"name":"split_by_iv","type":"Bool","title":"Switch splitting roles","default":false},{"name":"facet_mode","type":"Bool","title":"Facets","default":false},{"name":"add_graphics","type":"Bool","title":"Additional graphics","default":false},{"name":"custom_img_size","type":"Bool","title":"Custom","default":false},{"name":"custom_width","title":"Width","type":"Integer","default":550},{"name":"custom_height","title":"Height","type":"Integer","default":300},{"name":"palette_colors","type":"List","title":"Colors","options":[{"name":"YlOrRd","title":"Hot"},{"name":"YlOrBr","title":"Cozy"},{"name":"YlGnBu","title":"Warm ocean"},{"name":"YlGn","title":"Meadows"},{"name":"Reds","title":"Reds"},{"name":"RdPu","title":"Fandango"},{"name":"Purples","title":"Eggplant"},{"name":"PuRd","title":"Purple Reds"},{"name":"PuBuGn","title":"Pearl"},{"name":"PuBu","title":"Sky"},{"name":"OrRd","title":"Warm"},{"name":"Oranges","title":"Canyon"},{"name":"Greys","title":"Limbo"},{"name":"Greens","title":"Leaf"},{"name":"GnBu","title":"Cyan"},{"name":"BuPu","title":"Violets"},{"name":"BuGn","title":"Rainforest"},{"name":"Blues","title":"Deep ocean"},{"name":"Spectral","title":"Spectral"},{"name":"RdYlGn","title":"Parrot"},{"name":"RdYlBu","title":"Nautical"}]}];
+const options = [{"name":"data","type":"Data"},{"name":"sentiment_data","type":"Variables","suggested":["nominal"],"permitted":["factor"]},{"name":"iv","type":"Variable","suggested":["nominal","ordinal","continuous"],"permitted":["factor","numeric"]},{"name":"chart_type","type":"List","options":[{"title":"Box plots","name":"ct_boxplots"},{"title":"Density plots","name":"ct_density"},{"title":"Scatterplots","name":"ct_scatterplots"}]},{"name":"scoring_method","type":"List","options":[{"title":"By sentence","name":"by_sentence"},{"title":"By cell","name":"by_cell"},{"title":"By row","name":"by_row"}],"default":"by_sentence"},{"name":"averaging_method","type":"List","options":[{"title":"Default","name":"default_averaging"},{"title":"Courtesy reduction","name":"courtesy_reduction"},{"title":"Neutrality reduction","name":"neutrality_reduction"}],"default":"default_averaging"},{"name":"uncombine","type":"Bool","title":"Uncombine","default":false},{"name":"split_by_iv","type":"Bool","title":"Switch splitting roles","default":false},{"name":"facet_mode","type":"Bool","title":"Facets","default":false},{"name":"add_graphics","type":"Bool","title":"Additional graphics","default":false},{"name":"custom_img_size","type":"Bool","title":"Custom","default":false},{"name":"custom_width","title":"Width","type":"Integer","default":550},{"name":"custom_height","title":"Height","type":"Integer","default":300},{"name":"palette_colors","type":"List","title":"Colors","options":[{"name":"YlOrRd","title":"Hot"},{"name":"YlOrBr","title":"Cozy"},{"name":"YlGnBu","title":"Warm ocean"},{"name":"YlGn","title":"Meadows"},{"name":"Reds","title":"Reds"},{"name":"RdPu","title":"Fandango"},{"name":"Purples","title":"Eggplant"},{"name":"PuRd","title":"Purple Reds"},{"name":"PuBuGn","title":"Pearl"},{"name":"PuBu","title":"Sky"},{"name":"OrRd","title":"Warm"},{"name":"Oranges","title":"Canyon"},{"name":"Greys","title":"Limbo"},{"name":"Greens","title":"Leaf"},{"name":"GnBu","title":"Cyan"},{"name":"BuPu","title":"Violets"},{"name":"BuGn","title":"Rainforest"},{"name":"Blues","title":"Deep ocean"},{"name":"Spectral","title":"Spectral"},{"name":"RdYlGn","title":"Parrot"},{"name":"RdYlBu","title":"Nautical"}]},{"name":"drop","title":"Drop tokens","type":"String","default":""}];
 
 const view = function() {
     
@@ -248,6 +248,35 @@ view.layout = ui.extend({
 											format: FormatDef.number
 										}
 									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			type: DefaultControls.CollapseBox,
+			typeName: 'CollapseBox',
+			label: "Advanced",
+			collapsed: true,
+			controls: [
+				{
+					type: DefaultControls.LayoutBox,
+					typeName: 'LayoutBox',
+					margin: "large",
+					stretchFactor: 1,
+					controls: [
+						{
+							type: DefaultControls.Label,
+							typeName: 'Label',
+							label: "Lexicon Modifications",
+							controls: [
+								{
+									type: DefaultControls.TextBox,
+									typeName: 'TextBox',
+									name: "drop",
+									format: FormatDef.string
 								}
 							]
 						}

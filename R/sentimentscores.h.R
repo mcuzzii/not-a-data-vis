@@ -18,7 +18,8 @@ sentimentscoresOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             custom_img_size = FALSE,
             custom_width = 550,
             custom_height = 300,
-            palette_colors = NULL, ...) {
+            palette_colors = NULL,
+            drop = "", ...) {
 
             super$initialize(
                 package="nadv",
@@ -119,6 +120,10 @@ sentimentscoresOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     "Spectral",
                     "RdYlGn",
                     "RdYlBu"))
+            private$..drop <- jmvcore::OptionString$new(
+                "drop",
+                drop,
+                default="")
 
             self$.addOption(private$..sentiment_data)
             self$.addOption(private$..iv)
@@ -133,6 +138,7 @@ sentimentscoresOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             self$.addOption(private$..custom_width)
             self$.addOption(private$..custom_height)
             self$.addOption(private$..palette_colors)
+            self$.addOption(private$..drop)
         }),
     active = list(
         sentiment_data = function() private$..sentiment_data$value,
@@ -147,7 +153,8 @@ sentimentscoresOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         custom_img_size = function() private$..custom_img_size$value,
         custom_width = function() private$..custom_width$value,
         custom_height = function() private$..custom_height$value,
-        palette_colors = function() private$..palette_colors$value),
+        palette_colors = function() private$..palette_colors$value,
+        drop = function() private$..drop$value),
     private = list(
         ..sentiment_data = NA,
         ..iv = NA,
@@ -161,7 +168,8 @@ sentimentscoresOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         ..custom_img_size = NA,
         ..custom_width = NA,
         ..custom_height = NA,
-        ..palette_colors = NA)
+        ..palette_colors = NA,
+        ..drop = NA)
 )
 
 sentimentscoresResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -226,6 +234,7 @@ sentimentscoresBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' @param custom_width .
 #' @param custom_height .
 #' @param palette_colors .
+#' @param drop .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$text} \tab \tab \tab \tab \tab a html \cr
@@ -247,7 +256,8 @@ sentimentscores <- function(
     custom_img_size = FALSE,
     custom_width = 550,
     custom_height = 300,
-    palette_colors) {
+    palette_colors,
+    drop = "") {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("sentimentscores requires jmvcore to be installed (restart may be required)")
@@ -275,7 +285,8 @@ sentimentscores <- function(
         custom_img_size = custom_img_size,
         custom_width = custom_width,
         custom_height = custom_height,
-        palette_colors = palette_colors)
+        palette_colors = palette_colors,
+        drop = drop)
 
     analysis <- sentimentscoresClass$new(
         options = options,
