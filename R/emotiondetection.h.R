@@ -20,7 +20,15 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
             custom_img_size = FALSE,
             custom_width = 550,
             custom_height = 400,
-            drop = "", ...) {
+            drop = "",
+            include_anger = TRUE,
+            include_anticipation = TRUE,
+            include_disgust = TRUE,
+            include_fear = TRUE,
+            include_joy = TRUE,
+            include_sadness = TRUE,
+            include_surprise = TRUE,
+            include_trust = TRUE, ...) {
 
             super$initialize(
                 package="nadv",
@@ -120,6 +128,38 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
                 "drop",
                 drop,
                 default="")
+            private$..include_anger <- jmvcore::OptionBool$new(
+                "include_anger",
+                include_anger,
+                default=TRUE)
+            private$..include_anticipation <- jmvcore::OptionBool$new(
+                "include_anticipation",
+                include_anticipation,
+                default=TRUE)
+            private$..include_disgust <- jmvcore::OptionBool$new(
+                "include_disgust",
+                include_disgust,
+                default=TRUE)
+            private$..include_fear <- jmvcore::OptionBool$new(
+                "include_fear",
+                include_fear,
+                default=TRUE)
+            private$..include_joy <- jmvcore::OptionBool$new(
+                "include_joy",
+                include_joy,
+                default=TRUE)
+            private$..include_sadness <- jmvcore::OptionBool$new(
+                "include_sadness",
+                include_sadness,
+                default=TRUE)
+            private$..include_surprise <- jmvcore::OptionBool$new(
+                "include_surprise",
+                include_surprise,
+                default=TRUE)
+            private$..include_trust <- jmvcore::OptionBool$new(
+                "include_trust",
+                include_trust,
+                default=TRUE)
 
             self$.addOption(private$..sentiment_data)
             self$.addOption(private$..split_var)
@@ -136,6 +176,14 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
             self$.addOption(private$..custom_width)
             self$.addOption(private$..custom_height)
             self$.addOption(private$..drop)
+            self$.addOption(private$..include_anger)
+            self$.addOption(private$..include_anticipation)
+            self$.addOption(private$..include_disgust)
+            self$.addOption(private$..include_fear)
+            self$.addOption(private$..include_joy)
+            self$.addOption(private$..include_sadness)
+            self$.addOption(private$..include_surprise)
+            self$.addOption(private$..include_trust)
         }),
     active = list(
         sentiment_data = function() private$..sentiment_data$value,
@@ -152,7 +200,15 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
         custom_img_size = function() private$..custom_img_size$value,
         custom_width = function() private$..custom_width$value,
         custom_height = function() private$..custom_height$value,
-        drop = function() private$..drop$value),
+        drop = function() private$..drop$value,
+        include_anger = function() private$..include_anger$value,
+        include_anticipation = function() private$..include_anticipation$value,
+        include_disgust = function() private$..include_disgust$value,
+        include_fear = function() private$..include_fear$value,
+        include_joy = function() private$..include_joy$value,
+        include_sadness = function() private$..include_sadness$value,
+        include_surprise = function() private$..include_surprise$value,
+        include_trust = function() private$..include_trust$value),
     private = list(
         ..sentiment_data = NA,
         ..split_var = NA,
@@ -168,7 +224,15 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
         ..custom_img_size = NA,
         ..custom_width = NA,
         ..custom_height = NA,
-        ..drop = NA)
+        ..drop = NA,
+        ..include_anger = NA,
+        ..include_anticipation = NA,
+        ..include_disgust = NA,
+        ..include_fear = NA,
+        ..include_joy = NA,
+        ..include_sadness = NA,
+        ..include_surprise = NA,
+        ..include_trust = NA)
 )
 
 emotiondetectionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -240,6 +304,14 @@ emotiondetectionBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cla
 #' @param custom_width .
 #' @param custom_height .
 #' @param drop .
+#' @param include_anger .
+#' @param include_anticipation .
+#' @param include_disgust .
+#' @param include_fear .
+#' @param include_joy .
+#' @param include_sadness .
+#' @param include_surprise .
+#' @param include_trust .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$debug} \tab \tab \tab \tab \tab a preformatted \cr
@@ -264,7 +336,15 @@ emotiondetection <- function(
     custom_img_size = FALSE,
     custom_width = 550,
     custom_height = 400,
-    drop = "") {
+    drop = "",
+    include_anger = TRUE,
+    include_anticipation = TRUE,
+    include_disgust = TRUE,
+    include_fear = TRUE,
+    include_joy = TRUE,
+    include_sadness = TRUE,
+    include_surprise = TRUE,
+    include_trust = TRUE) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("emotiondetection requires jmvcore to be installed (restart may be required)")
@@ -295,7 +375,15 @@ emotiondetection <- function(
         custom_img_size = custom_img_size,
         custom_width = custom_width,
         custom_height = custom_height,
-        drop = drop)
+        drop = drop,
+        include_anger = include_anger,
+        include_anticipation = include_anticipation,
+        include_disgust = include_disgust,
+        include_fear = include_fear,
+        include_joy = include_joy,
+        include_sadness = include_sadness,
+        include_surprise = include_surprise,
+        include_trust = include_trust)
 
     analysis <- emotiondetectionClass$new(
         options = options,

@@ -57,6 +57,25 @@ children:
                 name: disp_by_perc
               - type: CheckBox
                 name: horizontal_bars
+          - type: Label
+            label: Include
+            children:
+              - type: CheckBox
+                name: include_anger
+              - type: CheckBox
+                name: include_anticipation
+              - type: CheckBox
+                name: include_disgust
+              - type: CheckBox
+                name: include_fear
+              - type: CheckBox
+                name: include_joy
+              - type: CheckBox
+                name: include_sadness
+              - type: CheckBox
+                name: include_surprise
+              - type: CheckBox
+                name: include_trust
       - type: LayoutBox
         margin: large
         cell:

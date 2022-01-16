@@ -11,4 +11,4 @@ LazyData: true
 Imports: jmvcore (>= 0.8.5), R6, ggplot2, dplyr, ggpubr, tidyr, scales,
         RColorBrewer, sentimentr, wordcloud, ggridges, stringi,
         colorspace
-Built: R 4.0.5; ; 2022-01-16 11:16:31 UTC; unix
+Built: R 4.0.5; ; 2022-01-16 14:17:21 UTC; unix

@@ -26,6 +26,30 @@ module.exports = {
   custom_img_size_changed: function(ui, event) {
     this.update_ui(ui);
   },
+  include_anger_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_anticipation_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_disgust_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_fear_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_joy_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_sadness_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_surprise_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
+  include_trust_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
   
   update_ui: function(ui) {
     
@@ -58,6 +82,25 @@ module.exports = {
     
     ui.custom_width.setPropertyValue('enable', custom_img_size_used);
     ui.custom_height.setPropertyValue('enable', custom_img_size_used);
+    
+    let anger = ui.include_anger.value();
+    let anticipation = ui.include_anticipation.value();
+    let disgust = ui.include_disgust.value();
+    let fear = ui.include_fear.value();
+    let joy = ui.include_joy.value();
+    let sadness = ui.include_sadness.value();
+    let surprise = ui.include_surprise.value();
+    let trust = ui.include_trust.value();
+    let single_emotion = anger + anticipation + disgust + fear + joy + sadness + surprise + trust == 1;
+    
+    ui.include_anger.setPropertyValue('enable', !single_emotion || !anger);
+    ui.include_anticipation.setPropertyValue('enable', !single_emotion || !anticipation);
+    ui.include_disgust.setPropertyValue('enable', !single_emotion || !disgust);
+    ui.include_fear.setPropertyValue('enable', !single_emotion || !fear);
+    ui.include_joy.setPropertyValue('enable', !single_emotion || !joy);
+    ui.include_sadness.setPropertyValue('enable', !single_emotion || !sadness);
+    ui.include_surprise.setPropertyValue('enable', !single_emotion || !surprise);
+    ui.include_trust.setPropertyValue('enable', !single_emotion || !trust);
     
     ui.view.model.options.endEdit();
     this.running = false;

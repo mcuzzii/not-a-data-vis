@@ -130,4 +130,44 @@ options:
       title: Drop tokens
       type: String
       default: ''
+    
+    - name: include_anger
+      title: Anger
+      type: Bool
+      default: true
+    
+    - name: include_anticipation
+      title: Anticipation
+      type: Bool
+      default: true
+    
+    - name: include_disgust
+      title: Disgust
+      type: Bool
+      default: true
+    
+    - name: include_fear
+      title: Fear
+      type: Bool
+      default: true
+    
+    - name: include_joy
+      title: Joy
+      type: Bool
+      default: true
+    
+    - name: include_sadness
+      title: Sadness
+      type: Bool
+      default: true
+    
+    - name: include_surprise
+      title: Surprise
+      type: Bool
+      default: true
+    
+    - name: include_trust
+      title: Trust
+      type: Bool
+      default: true
 ...

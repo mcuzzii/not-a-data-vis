@@ -20,6 +20,14 @@ emotiondetectionClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cl
       custom_width <- self$options$custom_width
       custom_height <- self$options$custom_height
       drop <- self$options$drop
+      include_anger <- self$options$include_anger
+      include_anticipation <- self$options$include_anticipation
+      include_disgust <- self$options$include_disgust
+      include_fear <- self$options$include_fear
+      include_joy <- self$options$include_joy
+      include_sadness <- self$options$include_sadness
+      include_surprise <- self$options$include_surprise
+      include_trust <- self$options$include_trust
       
       # If the user wants to modify the lexicon, do this.
       if (grepl("[A-Za-z]", drop)) {
@@ -101,6 +109,26 @@ emotiondetectionClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cl
       # Remove negated emotion types, since we aren't really interested in that.
       data <- data %>%
         subset(!endsWith(as.character(emotion_type), "_negated"))
+      
+      # Exclude emotions that the user wishes not to include.
+      included_emotions <- c()
+      if (include_anger) included_emotions <- c(included_emotions, "anger")
+      if (include_anticipation) included_emotions <- c(included_emotions, "anticipation")
+      if (include_disgust) included_emotions <- c(included_emotions, "disgust")
+      if (include_fear) included_emotions <- c(included_emotions, "fear")
+      if (include_joy) included_emotions <- c(included_emotions, "joy")
+      if (include_sadness) included_emotions <- c(included_emotions, "sadness")
+      if (include_surprise) included_emotions <- c(included_emotions, "surprise")
+      if (include_trust) included_emotions <- c(included_emotions, "trust")
+      data <- data[data$emotion_type %in% included_emotions, ]
+      
+      # The analysis shouldn't run in the possible case that all rows
+      # get deleted from the previous action.
+      if(nrow(data) == 0) {
+        print_warning(paste("There analysis detected no emotions of the type/s you've specified.",
+                            "Please try again with another combination of emotion types."))
+        return()
+      }
       
       # If percentage scale is enabled, convert sums into percentages.
       if (disp_by_perc) {
