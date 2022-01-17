@@ -61,6 +61,11 @@ options:
       title: Switch splitting roles
       type: Bool
       default: FALSE
+    
+    - name: combine_wordclouds
+      title: Combine wordclouds
+      type: Bool
+      default: FALSE
       
     - name: font_family
       title: Font family

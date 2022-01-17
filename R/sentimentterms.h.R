@@ -11,6 +11,7 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
             sentiment_type = "all",
             analysis_mode = "aggregate",
             switch = FALSE,
+            combine_wordclouds = FALSE,
             font_family = "sans",
             font_face = "normal",
             palette_colors = "RdYlBu",
@@ -69,6 +70,10 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
             private$..switch <- jmvcore::OptionBool$new(
                 "switch",
                 switch,
+                default=FALSE)
+            private$..combine_wordclouds <- jmvcore::OptionBool$new(
+                "combine_wordclouds",
+                combine_wordclouds,
                 default=FALSE)
             private$..font_family <- jmvcore::OptionList$new(
                 "font_family",
@@ -147,6 +152,7 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
             self$.addOption(private$..sentiment_type)
             self$.addOption(private$..analysis_mode)
             self$.addOption(private$..switch)
+            self$.addOption(private$..combine_wordclouds)
             self$.addOption(private$..font_family)
             self$.addOption(private$..font_face)
             self$.addOption(private$..palette_colors)
@@ -163,6 +169,7 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
         sentiment_type = function() private$..sentiment_type$value,
         analysis_mode = function() private$..analysis_mode$value,
         switch = function() private$..switch$value,
+        combine_wordclouds = function() private$..combine_wordclouds$value,
         font_family = function() private$..font_family$value,
         font_face = function() private$..font_face$value,
         palette_colors = function() private$..palette_colors$value,
@@ -178,6 +185,7 @@ sentimenttermsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
         ..sentiment_type = NA,
         ..analysis_mode = NA,
         ..switch = NA,
+        ..combine_wordclouds = NA,
         ..font_family = NA,
         ..font_face = NA,
         ..palette_colors = NA,
@@ -246,6 +254,7 @@ sentimenttermsBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #' @param sentiment_type .
 #' @param analysis_mode .
 #' @param switch .
+#' @param combine_wordclouds .
 #' @param font_family .
 #' @param font_face .
 #' @param palette_colors .
@@ -269,6 +278,7 @@ sentimentterms <- function(
     sentiment_type = "all",
     analysis_mode = "aggregate",
     switch = FALSE,
+    combine_wordclouds = FALSE,
     font_family = "sans",
     font_face = "normal",
     palette_colors = "RdYlBu",
@@ -299,6 +309,7 @@ sentimentterms <- function(
         sentiment_type = sentiment_type,
         analysis_mode = analysis_mode,
         switch = switch,
+        combine_wordclouds = combine_wordclouds,
         font_family = font_family,
         font_face = font_face,
         palette_colors = palette_colors,

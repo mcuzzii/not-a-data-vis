@@ -18,6 +18,10 @@ module.exports = {
   custom_img_size_changed: function(ui, event) {
     this.update_ui(ui);
   },
+  aggregate_mode_changed: function(ui, event) {
+    if (this.running) return;
+    this.update_ui(ui);
+  },
   
   update_ui: function(ui) {
     
@@ -42,6 +46,12 @@ module.exports = {
     ui.custom_height.setPropertyValue('enable', use_custom_size);
     
     if (!enable_modes) ui.aggregate_mode.setValue(true);
+    
+    let not_aggregate = ui.analysis_mode.value() != "aggregate";
+    let enable_combine = Boolean(splitting_var) && switch_val && not_aggregate;
+    
+    ui.combine_wordclouds.setPropertyValue('enable', enable_combine);
+    if (!enable_combine) ui.combine_wordclouds.setValue(false);
     
     ui.view.model.options.endEdit();
     this.running = false;

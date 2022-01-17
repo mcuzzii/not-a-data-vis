@@ -9,6 +9,7 @@ sentimenttermsClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Clas
       sentiment_data <- self$options$sentiment_data
       split_var <- self$options$split_var
       switch <- self$options$switch
+      combine_wordclouds <- self$options$combine_wordclouds
       custom_img_size <- self$options$custom_img_size
       custom_width <- self$options$custom_width
       custom_height <- self$options$custom_height
@@ -74,7 +75,7 @@ sentimenttermsClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Clas
       images <- self$results$plots
       images$setVisible(TRUE)
       
-      if (!switch && is.null(split_var)) {
+      if ((!switch && is.null(split_var)) || combine_wordclouds) {
         
         images$addItem(key = "Most Common Keywords")
         image <- images$get(key = "Most Common Keywords")
