@@ -112,6 +112,11 @@ children:
                 name: custom_height
                 suffix: px
                 format: number
+          - type: Label
+            label: Percentage Scale Options
+            children:
+              - type: CheckBox
+                name: relative_percentages
   - type: CollapseBox
     label: Advanced
     collapsed: true

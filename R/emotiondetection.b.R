@@ -28,6 +28,7 @@ emotiondetectionClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cl
       include_sadness <- self$options$include_sadness
       include_surprise <- self$options$include_surprise
       include_trust <- self$options$include_trust
+      relative_percentages <- self$options$relative_percentages
       
       # If the user wants to modify the lexicon, do this.
       if (grepl("[A-Za-z]", drop)) {
@@ -110,30 +111,43 @@ emotiondetectionClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cl
       data <- data %>%
         subset(!endsWith(as.character(emotion_type), "_negated"))
       
-      # Exclude emotions that the user wishes not to include.
-      included_emotions <- c()
-      if (include_anger) included_emotions <- c(included_emotions, "anger")
-      if (include_anticipation) included_emotions <- c(included_emotions, "anticipation")
-      if (include_disgust) included_emotions <- c(included_emotions, "disgust")
-      if (include_fear) included_emotions <- c(included_emotions, "fear")
-      if (include_joy) included_emotions <- c(included_emotions, "joy")
-      if (include_sadness) included_emotions <- c(included_emotions, "sadness")
-      if (include_surprise) included_emotions <- c(included_emotions, "surprise")
-      if (include_trust) included_emotions <- c(included_emotions, "trust")
-      data <- data[data$emotion_type %in% included_emotions, ]
+      exclude_emotions <- function() {
+        # Exclude emotions that the user wishes not to include.
+        included_emotions <- c()
+        if (include_anger) included_emotions <- c(included_emotions, "anger")
+        if (include_anticipation) included_emotions <- c(included_emotions, "anticipation")
+        if (include_disgust) included_emotions <- c(included_emotions, "disgust")
+        if (include_fear) included_emotions <- c(included_emotions, "fear")
+        if (include_joy) included_emotions <- c(included_emotions, "joy")
+        if (include_sadness) included_emotions <- c(included_emotions, "sadness")
+        if (include_surprise) included_emotions <- c(included_emotions, "surprise")
+        if (include_trust) included_emotions <- c(included_emotions, "trust")
+        data <<- data[data$emotion_type %in% included_emotions, ]
+        
+        # The analysis shouldn't run in the possible case that the previous action deleted
+        # all rows in the dataset.
+        if(nrow(data) == 0) {
+          print_warning(paste("There analysis detected no emotions of the type/s you've specified.",
+                              "Please try again with another combination of emotion types."))
+          return(TRUE)
+        }
+        return(FALSE)
+      }
       
-      # The analysis shouldn't run in the possible case that all rows
-      # get deleted from the previous action.
-      if(nrow(data) == 0) {
-        print_warning(paste("There analysis detected no emotions of the type/s you've specified.",
-                            "Please try again with another combination of emotion types."))
-        return()
+      if (relative_percentages) {
+        return_flag <- exclude_emotions()
+        if (return_flag) return()
       }
       
       # If percentage scale is enabled, convert sums into percentages.
       if (disp_by_perc) {
         data <- data %>%
           dplyr::mutate(freq = freq / sum(freq))
+      }
+      
+      if (!relative_percentages) {
+        return_flag <- exclude_emotions()
+        if (return_flag) return()
       }
       
       # To drop zero values when plotting, remove the rows where freq = 0.

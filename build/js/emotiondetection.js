@@ -50,6 +50,9 @@ module.exports = {
   include_trust_changed: function(ui, event) {
     this.update_ui(ui);
   },
+  disp_by_perc_changed: function(ui, event) {
+    this.update_ui(ui);
+  },
   
   update_ui: function(ui) {
     
@@ -101,6 +104,9 @@ module.exports = {
     ui.include_sadness.setPropertyValue('enable', !single_emotion || !sadness);
     ui.include_surprise.setPropertyValue('enable', !single_emotion || !surprise);
     ui.include_trust.setPropertyValue('enable', !single_emotion || !trust);
+    
+    let percentage_scale = ui.disp_by_perc.value();
+    ui.relative_percentages.setPropertyValue('enable', percentage_scale);
     
     ui.view.model.options.endEdit();
     this.running = false;

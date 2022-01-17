@@ -170,4 +170,9 @@ options:
       title: Trust
       type: Bool
       default: true
+      
+    - name: relative_percentages
+      title: Relative percentages
+      type: Bool
+      default: false
 ...

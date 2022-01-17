@@ -28,7 +28,8 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
             include_joy = TRUE,
             include_sadness = TRUE,
             include_surprise = TRUE,
-            include_trust = TRUE, ...) {
+            include_trust = TRUE,
+            relative_percentages = FALSE, ...) {
 
             super$initialize(
                 package="nadv",
@@ -160,6 +161,10 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
                 "include_trust",
                 include_trust,
                 default=TRUE)
+            private$..relative_percentages <- jmvcore::OptionBool$new(
+                "relative_percentages",
+                relative_percentages,
+                default=FALSE)
 
             self$.addOption(private$..sentiment_data)
             self$.addOption(private$..split_var)
@@ -184,6 +189,7 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
             self$.addOption(private$..include_sadness)
             self$.addOption(private$..include_surprise)
             self$.addOption(private$..include_trust)
+            self$.addOption(private$..relative_percentages)
         }),
     active = list(
         sentiment_data = function() private$..sentiment_data$value,
@@ -208,7 +214,8 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
         include_joy = function() private$..include_joy$value,
         include_sadness = function() private$..include_sadness$value,
         include_surprise = function() private$..include_surprise$value,
-        include_trust = function() private$..include_trust$value),
+        include_trust = function() private$..include_trust$value,
+        relative_percentages = function() private$..relative_percentages$value),
     private = list(
         ..sentiment_data = NA,
         ..split_var = NA,
@@ -232,7 +239,8 @@ emotiondetectionOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6
         ..include_joy = NA,
         ..include_sadness = NA,
         ..include_surprise = NA,
-        ..include_trust = NA)
+        ..include_trust = NA,
+        ..relative_percentages = NA)
 )
 
 emotiondetectionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -312,6 +320,7 @@ emotiondetectionBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cla
 #' @param include_sadness .
 #' @param include_surprise .
 #' @param include_trust .
+#' @param relative_percentages .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$debug} \tab \tab \tab \tab \tab a preformatted \cr
@@ -344,7 +353,8 @@ emotiondetection <- function(
     include_joy = TRUE,
     include_sadness = TRUE,
     include_surprise = TRUE,
-    include_trust = TRUE) {
+    include_trust = TRUE,
+    relative_percentages = FALSE) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("emotiondetection requires jmvcore to be installed (restart may be required)")
@@ -383,7 +393,8 @@ emotiondetection <- function(
         include_joy = include_joy,
         include_sadness = include_sadness,
         include_surprise = include_surprise,
-        include_trust = include_trust)
+        include_trust = include_trust,
+        relative_percentages = relative_percentages)
 
     analysis <- emotiondetectionClass$new(
         options = options,
