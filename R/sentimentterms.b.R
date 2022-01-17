@@ -10,6 +10,7 @@ sentimenttermsClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Clas
       split_var <- self$options$split_var
       switch <- self$options$switch
       combine_wordclouds <- self$options$combine_wordclouds
+      analysis_mode <- self$options$analysis_mode
       custom_img_size <- self$options$custom_img_size
       custom_width <- self$options$custom_width
       custom_height <- self$options$custom_height
@@ -77,8 +78,10 @@ sentimenttermsClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Clas
       
       if ((!switch && is.null(split_var)) || combine_wordclouds) {
         
-        images$addItem(key = "Most Common Keywords")
-        image <- images$get(key = "Most Common Keywords")
+        if (analysis_mode == "comparison") plot_name <- "Most Unevenly Distributed Words"
+        else plot_name <- "Most Frequent Words"
+        images$addItem(key = plot_name)
+        image <- images$get(key = plot_name)
         image$setSize(img_width, img_height)
         image$setState(data)
         
